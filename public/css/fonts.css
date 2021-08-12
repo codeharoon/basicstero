@@ -1,0 +1,35 @@
+
+
+@font-face {
+    font-family: 'SourceSansPro-Bold';
+    src: url('../fonts/SourceSansPro/SourceSansPro-Bold.eot');
+    src: url('../fonts/SourceSansPro/SourceSansPro-Boldd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Bold.woff') format('woff'),
+         url('../fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('truetype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Bold.svg#cuprumffuregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SourceSansPro-Light';
+    src: url('../fonts/SourceSansPro/SourceSansPro-Light.eot');
+    src: url('../fonts/SourceSansPro/SourceSansPro-Lightd41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Light.woff') format('woff'),
+         url('../fonts/SourceSansPro/SourceSansPro-Light.ttf') format('truetype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Light.svg#cuprumffuregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSansPro-Regular';
+    src: url('../fonts/SourceSansPro/SourceSansPro-Regular.eot');
+    src: url('../fonts/SourceSansPro/SourceSansPro-Regulard41d.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
+         url('../fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype'),
+         url('../fonts/SourceSansPro/SourceSansPro-Regular.svg#cuprumffuregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

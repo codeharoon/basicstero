@@ -384,63 +384,63 @@
             <div class="nav">
                                     <span>
                         <a class=""
-                                                      href="/news"
+                                                      href="#"
                                                    >News</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/price"
+                                                      href="#"
                                                    >Purchase</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/discounts"
+                                                      href="#"
                                                    >Discounts</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/faq"
+                                                      href="#"
                                                    >FAQ</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/terms"
+                                                      href="#"
                                                    >Our terms</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/innovations"
+                                                      href="#"
                                                    >Innovations</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/results"
+                                                      href="#"
                                                    >Lab reports</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/reviews"
+                                                      href="#"
                                                    >Reviews</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="http://pharmacomlabs.com/code"
+                                                      href="#"
                                                    >Check code</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/contact"
+                                                      href="#"
                                                    >Contact us</a>
                     </span>
                                                             </div>
             <div class="nav2">
                 <span><a class=""
-                         href="https://basicstero.ws/oralsteroids">ORAL LINE</a></span>
+                         href="#">ORAL LINE</a></span>
 
                 <span><a class=""
-                         href="https://basicstero.ws/injectableline">INJECTABLE LINE</a></span>
+                         href="#">INJECTABLE LINE</a></span>
                 <span><a class=""
-                         href="https://basicstero.ws/hgh">HGH AND PEPTIDES</a></span>
+                         href="#">HGH AND PEPTIDES</a></span>
             </div>
 
         </div>
@@ -633,7 +633,7 @@
         </div>
     </div>
     <div style="text-align:center;margin:-10px 0 30px 0;">
-        <a class="button4" href="/price">Show all products</a>
+        <a class="button4" href="#">Show all products</a>
     </div>
 
     <div class="section-1">

@@ -482,9 +482,9 @@
             </a>
             <div class="icon-in auth_a">
                 <div class="icon-in-item"></div>
-                <a class="" href="https://basicstero.ws/login">Login</a>
+                <a class="" href="#">Login</a>
             </div>
-            <a href="https://basicstero.ws/order/cart">
+            <a href="#">
                 <div class="icon-in-item top_cart">
                     <div class="icon-quantity" id="cart_quantity">0</div>
                 </div>
@@ -520,13 +520,13 @@
     <div class="box2 border1">
         <div class="box2-in">
             <div class="box2-in-item">
-    <a href="https://basicstero.ws/trenbolone/pharmatren-h-100">
+    <a href="#">
         <div class="box2-img">
             <img src="{{asset('products/img_product_112_400_0_0.jpg')}}" alt="">
         </div>
     </a>
     <div class="wrap1">
-        <a href="https://basicstero.ws/trenbolone/pharmatren-h-100">
+        <a href="#">
             <div class="title1">PHARMATREN H 100</div>
         </a>
         <div class="title2">
@@ -557,13 +557,13 @@
     </div>
 </div>
 <div class="box2-in-item">
-    <a href="https://basicstero.ws/testosterones">
+    <a href="#">
         <div class="box2-img">
             <img src="{{asset('products/img_product_191_400_0_0.png')}}" alt="">
         </div>
     </a>
     <div class="wrap1">
-        <a href="https://basicstero.ws/testosterones">
+        <a href="#">
             <div class="title1">PHARMATEST PH 100 Ampules</div>
         </a>
         <div class="title2">
@@ -594,13 +594,13 @@
     </div>
 </div>
 <div class="box2-in-item">
-    <a href="https://basicstero.ws/pharma-mix">
+    <a href="#">
         <div class="box2-img">
             <img src="{{asset('products/img_product_208_400_0_0.png')}}" alt="">
         </div>
     </a>
     <div class="wrap1">
-        <a href="https://basicstero.ws/pharma-mix">
+        <a href="#">
             <div class="title1">PHARMA MIX 4 Ampules</div>
         </a>
         <div class="title2">

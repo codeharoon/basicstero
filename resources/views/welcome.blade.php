@@ -748,7 +748,7 @@ we updated our site. The new design should be more user-friendly. We merged all 
 <script src="{{asset('js/jquery-2.2.0.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('slick/slick.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-<script src="{{asset('js/toastr/toastr.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/toastr.js')}}" type="text/javascript"></script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -878,7 +878,7 @@ we updated our site. The new design should be more user-friendly. We merged all 
     ga('send', 'pageview');
 
 </script>
-    <script type='text/javascript' src='/js/jquery.countdown.js'></script>
+    <script type='text/javascript' src='{{asset('js/jquery.countdown.js')}}'></script>
     <script>
         $(document).ready(function () {
             $('.currency_select').change(function () {

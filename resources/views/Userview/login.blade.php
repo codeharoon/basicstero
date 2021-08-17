@@ -352,11 +352,11 @@
                     <div class="box18-in">
                         <div class="box18-in-item">
                             <div class="title19">Create account</div>
-                            <form method="POST" action="https://basicstero.ws/register">
-                                <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">
+                            <form method="POST" action="{{route('register')}}">
+                                @csrf
                                 <div class="form-wrap">
                                     <div class="box12-item4">
-                                        <input type="text" class="form-input-line2" placeholder="Username" name="username" value="">
+                                        <input type="text" class="form-input-line2" placeholder="Username" name="username" value="admin">
                                     </div>
                                     <div class="box12-item5">
                                         <input type="password" class="form-input-line2" placeholder="Password" name="password">
@@ -374,17 +374,25 @@
                         </div>
                         <div class="box18-in-item">
                             <div class="title19">Already registered?</div>
-                            <form method="POST" action="https://basicstero.ws/login">
-                                <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">
+                            <form method="POST" action="{{route('userlogin')}}">
+                                @csrf
                                 <div class="form-wrap">
                                     <div class="box12-item4">
-                                        <input type="text" class="form-input-line2" placeholder="Username" name="username">
+                                        <input type="email" class="form-input-line2" placeholder="Email" name="email">
                                     </div>
                                     <div class="box12-item4">
                                         <input type="password" class="form-input-line2" placeholder="Password" name="password">
                                     </div>
 
                                 </div>
+                                @error('login-error')
+                                    <div class="login_error">{{ $message }}</div><br clear="all">
+                                @enderror
+                                @if(session()->has('login-error'))
+                                    <span class="alert alert-danger pt-2">
+                                        <div class="login_error">{{session('login-error')}}</div><br clear="all">
+                                    </span>
+                                @endif
                                                                     <button type="submit" class="button4">Login</button>
                                 <a href="/restore" style="color:#089dea;float:right;">Forgot your password?</a>
                                 <br clear="all">

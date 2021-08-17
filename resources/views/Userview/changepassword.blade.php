@@ -446,8 +446,8 @@
 
 
 <div class="box17 border1">
-    <form method="POST">
-        <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">
+    <form method="POST" action="{{route('storepassword')}}">
+        @csrf
         <div class="box17-in">
             <div class="wrap7">
                 <div class="title19">Change password</div>

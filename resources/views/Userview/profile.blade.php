@@ -446,8 +446,8 @@
 
 
 <div class="box17 border1">
-    <form action="https://basicstero.ws/user/profile" method="POST">
-        <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">
+    <form action="{{route('updateprofile')}}" method="POST">
+        @csrf
         <div class="box17-in">
             <div class="wrap7">
                 <div class="title19">Edit profile</div>
@@ -459,46 +459,47 @@
                         <div class="form-wrap">
                             <div class="box12-item4">
                                 <span class="mobile-only">Full name *</span>
-                                <input type="text" id="form-input-line" value="Haroon iqbal"
-                                       class="form-input-line2" name="order_address[fio]" placeholder="Ф.И.О. *" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->full_name}}"
+                                       class="form-input-line2" name="fullname" placeholder="Ф.И.О. *" autocomplete="off">
                             </div>
                             <div class="box12-item4 ">
                                 <span class="mobile-only">E-mail *</span>
-                                <input type="text" id="form-input-line" value="harooniqbal585@gmail.com"
-                                       class="form-input-line2" name="order_address[email]" placeholder="E-mail *" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->email}}"
+                                       class="form-input-line2" name="email" placeholder="E-mail *" autocomplete="off">
                             </div>
 
                             <div class="box12-item5">
                                 <span class="mobile-only">Address line 1 *</span>
-                                <input type="text" id="form-input-line" value="Lahore, pakistan"
-                                       class="form-input-line2" name="order_address[address_street]" placeholder="Address line 1 *" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->addressline1}}"
+                                       class="form-input-line2" name="address1" placeholder="Address line 1 *" autocomplete="off">
                             </div>
                             <div class="box12-item5 moved">
                                 <span class="mobile-only">Address line 2 (optional)</span>
-                                <input type="text" id="form-input-line" value="Lahore, pakistan"
-                                       class="form-input-line2" name="order_address[address_street2]" placeholder="Address line 2 (optional)" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->addressline1}}"
+                                       class="form-input-line2" name="address2" placeholder="Address line 2 (optional)" autocomplete="off">
                             </div>
 
                             <div class="box12-item5">
                                 <span class="mobile-only">City *</span>
-                                <input type="text" id="form-input-line" value="Lahore"
-                                       class="form-input-line2" name="order_address[address_city]" placeholder="City *" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->city}}"
+                                       class="form-input-line2" name="city" placeholder="City *" autocomplete="off">
                             </div>
                             <div class="box12-item5 moved">
                                 <span class="mobile-only">State / Region</span>
-                                <input type="text" id="form-input-line" value="punjab"
-                                       class="form-input-line2" name="order_address[address_region]" placeholder="State / Region" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->state}}"
+                                       class="form-input-line2" name="state" placeholder="State / Region" autocomplete="off">
                             </div>
 
                             <div class="box12-item5">
                                 <span class="mobile-only">Zip Code *</span>
-                                <input type="text" id="form-input-line" value="30936"
-                                       class="form-input-line2" name="order_address[address_index]" placeholder="Zip Code *" autocomplete="off">
+                                <input type="text" id="form-input-line" value="{{$user->zipcode}}"
+                                       class="form-input-line2" name="zipcode" placeholder="Zip Code *" autocomplete="off">
                             </div>
                             <div class="box12-item5 moved">
                                 <span class="mobile-only">Choose your country *</span>
-                                <select class="country_select" name="order_address[address_country]">
+                                <select class="country_select" name="country">
                                     <option value="">Choose your country *</option>
+                                    
                                                                                 <option value="United States"
                                                                                             >
                                             United States

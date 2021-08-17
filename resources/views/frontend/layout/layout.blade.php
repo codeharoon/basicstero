@@ -103,6 +103,11 @@
                                                       href="{{route('contact')}}"
                                                    >Contact us</a>
                     </span>
+                                        @auth
+                                            </span>                                                                                 <span>
+                                                <a class="personal_area" href="{{route('cart')}}">DASHBOARD</a>
+                                            </span>
+                                        @endauth
                                                             </div>
             <div class="nav2">
                 <span><a class=""

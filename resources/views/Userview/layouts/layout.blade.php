@@ -104,10 +104,11 @@
                         <a class=""
                                                       href="/contact"
                                                    >Contact us</a>
-                    </span>
-                                                                                                        <span>
-                        <a class="personal_area" href="https://basicstero.ws/user/profile">DASHBOARD</a>
-                    </span>
+                                            @auth
+                                                </span>                                                                                 <span>
+                                                    <a class="personal_area" href="{{route('cart')}}">DASHBOARD</a>
+                                                </span>
+                                            @endauth
                             </div>
             <div class="nav2">
                 <span><a class=""
@@ -157,8 +158,9 @@
                         <option  value="3">GBP</option>
                     </select>
                 </a>
+
                 <a href="{{route('profile')}}">
-                    <div class="icon-in-item user"></div> harooniqbal123
+                    <div class="icon-in-item user"></div> {{Auth::user()->username}}
                 </a>
 
                 <a href="{{route('cart')}}">
@@ -182,7 +184,7 @@
                 <a href="{{route('changepassword')}}">
                     <div class="box-item4">Change password</div>
                 </a>
-                <a href="/logout">
+                <a href="{{route('logout')}}">
                     <div class="box-item4">Logout</div>
                 </a>
                                                                     <a>
@@ -190,6 +192,7 @@
                         Balance: $0.00
                     </div>
                 </a>
+                
             </div>
             </div>
 

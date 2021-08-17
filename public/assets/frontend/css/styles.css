@@ -1,0 +1,118 @@
+.one-show-more-height{
+    max-height: 155px;
+    overflow: hidden;
+}
+.two-show-more-height{
+    max-height: 155px;
+    overflow: hidden;
+}
+.three-show-more-height{
+    max-height: 155px;
+    overflow: hidden;
+}
+.our-services{
+    position: relative;
+    height: 270px;
+    overflow-y: auto;
+    margin: 0px auto;
+}
+/*.footer-ul-height-after{*/
+/*    max-height: 100%;*/
+/*    overflow: visible;*/
+/*}*/
+#home-search-box{
+    position: absolute !important;
+    bottom: 250px;
+    left: 0;
+    right: 0;
+    z-index: 1
+}
+@media only screen and (max-width: 600px) {
+    #home-search-box{
+        position: absolute !important;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        z-index: 1
+    }
+}
+#adv-search-btn{
+    font-size: 15px !important;
+    color: #D0A37F;
+    position: absolute;
+    bottom: -25px;
+    left: 15px
+}
+.project-box{
+    border-radius:25px !important;
+    position: relative
+}
+.project-box img{
+    width: 100%;
+}
+.project-box-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #1B335F;
+}
+.project-box:hover .project-box-overlay{
+    opacity: 0.5;
+}
+.project-box-text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#home-top-slider{
+    position: relative;
+    padding-top: 93px;
+}
+@media only screen and (max-width: 600px) {
+    #home-top-slider{
+        padding-top: 0px;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    #home-top-slider{
+        padding-top: 0px;
+    }
+}
+#blog-main-text{
+    color: #ffffff;
+    font-size: 70px
+}
+@media only screen and (max-width: 600px) {
+    #blog-main-text{
+        color: #ffffff;
+        font-size: 25px
+    }
+    #blog-main-text-child{
+        font-size: 15px
+    }
+}
+#blog-header-image{
+    width: 100%;
+    max-height: 570px;
+}
+#blog-header-overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #111111;
+    opacity: 0.2;
+}
+

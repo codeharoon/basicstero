@@ -106,7 +106,7 @@ Route::group(['middleware' => ['auth']],function (){
 
 
 
-Route::get('admin-login', [AdminController::class,'admin_form'])->name('admin_login');
+Route::get('admin', [AdminController::class,'admin_form'])->name('admin_login');
 Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 //new url
 Route::get('all-news', [NewsController::class,'index'])->name('allnews');

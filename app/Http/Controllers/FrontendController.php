@@ -14,9 +14,12 @@ class FrontendController extends Controller
         return view('welcome',compact('products'));
     }
     public function singleproduct($id){
-        $product=Product::with('stock','classification')->where('id','=',$id)->first();
-        // dd($product);
-        return view('frontend.singleproduct',compact('product'));
+        $product=Product::with('stock','classification')
+                            ->where('id','=',$id)->first();
+        $recommended_product=Product::with('stock','classification')
+                                     ->where('classification_id','=',$product->classification_id)
+                                     ->limit(7)->get();
+        return view('frontend.singleproduct',compact('product','recommended_product'));
     }
 
     public function showalldiscount(){

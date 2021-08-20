@@ -353,52 +353,16 @@
 
 <div class="box2 border1">
     <div class="box2-in">
-        <div class="box2-in-item">
-<a href="#">
-    <div class="box2-img">
-        <img src="{{asset('products/img_product_112_400_0_0.jpg')}}" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="#">
-        <div class="title1">PHARMATREN H 100</div>
-    </a>
-    <div class="title2">
-        Trenbolone hexahydrobenzylcarbonate
-    </div>
 
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="114" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="114" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$68.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="114" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$68.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="114" data-warehouse="3">
-        <span class="wh_label">W3 - IN STOCK</span> <span class="price_label">$95.00</span>
-    </div>
-</div>
-</div>
 @foreach ($products as $item)
 <div class="box2-in-item">
-    <a href="#">
+    <a href="{{route('singleproduct',$item->id)}}">
         <div class="box2-img">
             <img src="{{asset('/assets/backend/product/image/'.$item->image)}}" alt="">
         </div>
     </a>
     <div class="wrap1">
-        <a href="#">
+        <a href="{{route('singleproduct',$item->id)}}">
             <div class="title1">{{$item->title}}</div>
         </a>
         <div class="title2">
@@ -437,44 +401,6 @@
     </div>
 @endforeach
 
-
-<div class="box2-in-item">
-<a href="#">
-    <div class="box2-img">
-        <img src="{{asset('products/img_product_208_400_0_0.png')}}" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="#">
-        <div class="title1">PHARMA MIX 4 Ampules</div>
-    </a>
-    <div class="title2">
-        Nand. Phenyl;Nand. Deca;Test. Phenyl;Test. Deca
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="208" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="208" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="208" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="208" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$115.00</span>
-    </div>
-</div>
-</div>
     </div>
 </div>
 

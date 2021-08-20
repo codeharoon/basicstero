@@ -364,532 +364,212 @@
 @endsection
 
 @section('content')
-<div class="box5 border1">
-    <div class="box5-item1">
-        <div class="breads-in">
-                                <a href="https://basicstero.ws/injectableline" class="breads-in-item1">Injectable Line</a>
-                            <span class="breads-in-item2">/</span>
-            <a href="/injection-line/trenbolone"
-               class="breads-in-item1">Trenbolones</a>
-            <span class="breads-in-item2">/</span>
+            <div class="box5 border1">
+        <div class="box5-item1">
+            <div class="breads-in">
+                                    <a href="https://basicstero.ws/injectableline" class="breads-in-item1">Injectable Line</a>
+                                <span class="breads-in-item2">/</span>
+                <a href="/injection-line/trenbolone"
+                   class="breads-in-item1">{{$product->type}}</a>
+                <span class="breads-in-item2">/</span>
+            </div>
+            <h3 style="text-transform:uppercase;">{{$product->title}}</h3>
         </div>
-        <h3 style="text-transform:uppercase;">PHARMATREN H 100</h3>
+
+
+        @foreach ($product->stock as $item)
+        <div class="box5-item2 margin-left-10">
+            <div class="cart-wrap">
+                <div class="cart-item0">
+                    W{{$loop->iteration}}
+                </div>
+                <div class="cart-item1">
+                    <div class="cart">
+                        <div class="minus"></div>
+                        <div class="sum"><input type="text" value="1"></div>
+                        <div class="plus"></div>
+                    </div>
+                </div>
+                <div class="cart-item2">
+                    <div class="cart-title">
+                        ${{$item->price}}
+                        <div class="cart-button refactor" data-product_id="114" data-warehouse="3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+     
     </div>
 
-    <div class="box5-item2 margin-left-10">
-        <div class="cart-wrap">
-            <div class="cart-item0">
-                W1
-            </div>
-            <div class="cart-item1">
-                <div class="cart">
-                    <div class="minus"></div>
-                    <div class="sum"><input type="text" value="1"></div>
-                    <div class="plus"></div>
-                </div>
-            </div>
-            <div class="cart-item2">
-                <div class="cart-title">
-                    $68.00
-                    <div class="cart-button refactor" data-product_id="114" data-warehouse="1"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="box5-item2 margin-left-10">
-        <div class="cart-wrap">
-            <div class="cart-item0">
-                W2
-            </div>
-            <div class="cart-item1">
-                <div class="cart">
-                    <div class="minus"></div>
-                    <div class="sum"><input type="text" value="1"></div>
-                    <div class="plus"></div>
-                </div>
-            </div>
-            <div class="cart-item2">
-                <div class="cart-title">
-                    $68.00
-                    <div class="cart-button refactor" data-product_id="114" data-warehouse="2"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="box5-item2 margin-left-10">
-        <div class="cart-wrap">
-            <div class="cart-item0">
-                W3
-            </div>
-            <div class="cart-item1">
-                <div class="cart">
-                    <div class="minus"></div>
-                    <div class="sum"><input type="text" value="1"></div>
-                    <div class="plus"></div>
-                </div>
-            </div>
-            <div class="cart-item2">
-                <div class="cart-title">
-                    $95.00
-                    <div class="cart-button refactor" data-product_id="114" data-warehouse="3"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="box6 border1">
-    <div class="box6-in line3">
-        <div style="height:55px;"></div>
-        <div class="quantity-external" style="bottom:auto;top:0;">
-            <div class="quantity-inner-wrapper quantity_max">
-                <div class="quantity_inner_wrap"></div>
-                <div class="quantity_inner_fill" style="width:100%;"></div>
-                <div class="quantity_title">
-                    W1 - IN STOCK
-                </div>
-            </div>
-        </div>
-        <div class="quantity-external" style="bottom:auto;top:18px;">
-            <div class="quantity-inner-wrapper quantity_max">
-                <div class="quantity_inner_wrap"></div>
-                <div class="quantity_inner_fill" style="width:100%;"></div>
-                <div class="quantity_title">
-                    W2 - IN STOCK
-                </div>
-            </div>
-        </div>
-        <div class="quantity-external" style="bottom:auto;top:36px;">
-            <div class="quantity-inner-wrapper quantity_max">
-                <div class="quantity_inner_wrap"></div>
-                <div class="quantity_inner_fill" style="width:100%;"></div>
-                <div class="quantity_title">
-                    W3 - IN STOCK
-                </div>
-            </div>
-        </div>
-
-        <div class="box6-in-item1">
-            <div class="box6-in-item1-img">
-                <span><img src="/uploads/products/img_product_114_400_0_0.jpeg" alt=""></span>
-            </div>
-        </div>
-        <div class="box6-in-item2">
-            <div class="title8">
-
+    <div class="box6 border1">
+        <div class="box6-in line3">
+            <div style="height:55px;"></div>
+            @foreach ($product->stock as $item)
                 
-                <br>100 mg/ml
-
-            </div>
-                                <div style="padding:10px 20px;background:#efefef;border-radius:5px;margin-top:10px;width:calc(100% - 60px)">
-                    {!!$product->short_description!!}
-                </div>
-                            <div class="box7">
-                <div class="box7-in">
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Activity</div>
-                        <div class="box7-title2">{{$product->activity}}</div>
+            @endforeach
+            <div class="quantity-external" style="bottom:auto;top:0;">
+                <div class="quantity-inner-wrapper quantity_max">
+                    <div class="quantity_inner_wrap"></div>
+                    <div class="quantity_inner_fill" style="width:100%;"></div>
+                    <div class="quantity_title">
+                        W1 - IN STOCK
                     </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Delay water</div>
-                        <div class="box7-title2">{{$product->delay_water}}</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Classification</div>
-                        <div class="box7-title2">Anabolic steroid</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">HBR</div>
-                        <div class="box7-title2">Perhaps</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Dosage</div>
-                        <div class="box7-title2">Men 200 - 600 mg / week</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Hepatoxity</div>
-                        <div class="box7-title2">Yes</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Acne</div>
-                        <div class="box7-title2">Rarely</div>
-                    </div>
-                    <div class="box7-in-item">
-                        <div class="box7-title1">Aromatization</div>
-                        <div class="box7-title2">No</div>
-                    </div>
-
                 </div>
             </div>
-        </div>
+            <div class="quantity-external" style="bottom:auto;top:18px;">
+                <div class="quantity-inner-wrapper quantity_max">
+                    <div class="quantity_inner_wrap"></div>
+                    <div class="quantity_inner_fill" style="width:100%;"></div>
+                    <div class="quantity_title">
+                        W2 - IN STOCK
+                    </div>
+                </div>
+            </div>
+            <div class="quantity-external" style="bottom:auto;top:36px;">
+                <div class="quantity-inner-wrapper quantity_max">
+                    <div class="quantity_inner_wrap"></div>
+                    <div class="quantity_inner_fill" style="width:100%;"></div>
+                    <div class="quantity_title">
+                        W3 - IN STOCK
+                    </div>
+                </div>
+            </div>
 
+            <div class="box6-in-item1">
+                <div class="box6-in-item1-img">
+                    <span><img src="{{asset('/assets/backend/product/image/'.$product->image)}}" alt=""></span>
+                </div>
+            </div>
+            <div class="box6-in-item2">
+                <div class="title8">
+
+                    
+                    <br>100 mg/ml
+
+                </div>
+                                    <div style="padding:10px 20px;background:#efefef;border-radius:5px;margin-top:10px;width:calc(100% - 60px)">
+                         {!!$product->short_description!!}
+                    </div>
+                                <div class="box7">
+                    <div class="box7-in">
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Activity</div>
+                            <div class="box7-title2">{{$product->activity}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Delay water</div>
+                            <div class="box7-title2">{{$product->delay_water}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Classification</div>
+                            <div class="box7-title2">{{$product->classification->name}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">HBR</div>
+                            <div class="box7-title2">{{$product->hbr}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Dosage</div>
+                            <div class="box7-title2">{{$product->Dosage}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Hepatoxity</div>
+                            <div class="box7-title2">{{$product->Hepatoxity}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Acne</div>
+                            <div class="box7-title2">{{$product->acne}}</div>
+                        </div>
+                        <div class="box7-in-item">
+                            <div class="box7-title1">Aromatization</div>
+                            <div class="box7-title2">{{$product->aromatization}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-        <div class="box4 border1">
-        <div class="box4-in">
-            <div class="box4-in-item">
-                <div class="title5">Description</div>
-                <div class="text1 margin1">
-                   {!!$product->description!!}
+            <div class="box4 border1">
+            <div class="box4-in">
+                <div class="box4-in-item">
+                    <div class="title5">Description</div>
+                    <div class="text1 margin1">
+                        {!!$product->description!!}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="title9 border1 margin2">We recomend with this product:</div>
+        <div class="title9 border1 margin2">We recomend with this product:</div>
 
-<div class="box2 border1">
-    <div class="box2-in">
-        <div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone/pharmatren-e-200">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_112_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone/pharmatren-e-200">
-        <div class="title1">PHARMATREN E 200</div>
-    </a>
-    <div class="title2">
-        Trenbolone enanthate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="112" class="product_quantity" disabled="" value="1">
+    <div class="box2 border1">
+        <div class="box2-in">
+            @foreach ($recommended_product as $item)
+            <div class="box2-in-item">
+                <a href="{{route('singleproduct',$item->id)}}">
+                    <div class="box2-img">
+                        <img src="{{asset('/assets/backend/product/image/'.$item->image)}}" alt="">
+                    </div>
+                </a>
+                <div class="wrap1">
+                    <a href="{{route('singleproduct',$item->id)}}">
+                        <div class="title1">{{$item->title}}</div>
+                    </a>
+                    <div class="title2">
+                        {{$item->classification->name}}
+                    </div>
+            
+                    <div class="cart-item1 aligner">
+                        <div class="cart">
+                            <div class="minus2"></div>
+                            <div class="sum2">
+                                <input type="text" data-product_id="112" class="product_quantity" disabled="" value="1">
+                            </div>
+                            <div class="plus2"></div>
+                        </div>
+                    </div>
+                    @foreach ($item->stock as $whouse)
+                        <div class="price cart-button @if( $whouse->stock == 0 )
+                            {{"quantity_none"}}
+                      @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+                            {{"quantity_avg"}}
+                      @else
+                            {{"quantity_max"}}
+                      @endif" data-product_id="112" data-warehouse="1">
+                            <span class="wh_label">W1 - @if( $whouse->stock == 0 )
+                                {{"OUT OF STOCK"}}
+                          @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+                                {{"RUNNING LOW"}}
+                          @else
+                                {{"IN STOCK"}}
+                          @endif</span> <span class="price_label">${{$whouse->price}}</span>
+                        </div>
+                    @endforeach
+                
+                </div>
             </div>
-            <div class="plus2"></div>
+            @endforeach
+
+            
         </div>
     </div>
 
-    <div class="price cart-button quantity_max" data-product_id="112" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="112" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="112" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$110.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone/pharmatren-a-100">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_113_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone/pharmatren-a-100">
-        <div class="title1">PHARMATREN A 100</div>
-    </a>
-    <div class="title2">
-        Trenbolone acetate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="113" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
+    <div class="box1 border1">
+        <div class="box-item1">
+            <h4>Buy steroids online</h4>
         </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="113" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$45.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="113" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$45.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="113" data-warehouse="3">
-        <span class="wh_label">W3 - IN STOCK</span> <span class="price_label">$85.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone/pharma-3-tren-200">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_115_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone/pharma-3-tren-200">
-        <div class="title1">PHARMA 3 TREN 200</div>
-    </a>
-    <div class="title2">
-        Blend of Trenbolones
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="115" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="115" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="115" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="115" data-warehouse="3">
-        <span class="wh_label">W3 - IN STOCK</span> <span class="price_label">$110.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_196_400_0_0.png" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone">
-        <div class="title1">PHARMATREN A 100 Ampules</div>
-    </a>
-    <div class="title2">
-        Trenbolone acetate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="196" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="196" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$45.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="196" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$45.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="196" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$90.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_197_400_0_0.png" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone">
-        <div class="title1">PHARMATREN E 200 Ampules</div>
-    </a>
-    <div class="title2">
-        Trenbolone enanthate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="197" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="197" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="197" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="197" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$115.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_198_400_0_0.png" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone">
-        <div class="title1">PHARMATREN H 100 Ampules</div>
-    </a>
-    <div class="title2">
-        Trenbolone hexahydrobenzylcarbonate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="198" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="198" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$68.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="198" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$68.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="198" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$100.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_199_400_0_0.png" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone">
-        <div class="title1">PHARMA 3 TREN 200 Ampules</div>
-    </a>
-    <div class="title2">
-        Blend of Trenbolones
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="199" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="199" data-warehouse="1">
-        <span class="wh_label">W1 - OUT OF STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="199" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$79.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="199" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$115.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_221_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone">
-        <div class="title1">PHARMA TREN 50 Base (not oil, its water suspension)</div>
-    </a>
-    <div class="title2">
-        Trenbolone base
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="221" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="221" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$30.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="221" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$30.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="221" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$30.00</span>
-    </div>
-</div>
-</div>
-<div class="box2-in-item">
-<a href="https://basicstero.ws/trenbolone/-us">
-    <div class="box2-img">
-        <img src="/uploads/products_us/img_product_219_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/trenbolone/-us">
-        <div class="title1">PHARMA TREN 50</div>
-    </a>
-    <div class="title2">
-        Trenbolone base
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="200219" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="200219" data-warehouse="1">
-        <span class="wh_label">W1 - OUT OF STOCK</span> <span class="price_label">$0.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="200219" data-warehouse="2">
-        <span class="wh_label">W2 - OUT OF STOCK</span> <span class="price_label">$0.00</span>
-    </div>
-
-    <div class="price cart-button quantity_max" data-product_id="200219" data-warehouse="3">
-        <span class="wh_label">W3 - IN STOCK</span> <span class="price_label">$60.00</span>
-    </div>
-</div>
-</div>
-    </div>
-</div>
-
-<div class="box1 border1">
-    <div class="box-item1">
-        <h4>Buy steroids online</h4>
-    </div>
-    <div class="box-item2">
-        <div class="text2">
-            <p>YOU ARE YOU ARE IN THE INTERNATIONAL PREMIUM WAREHOUSE NOW
+        <div class="box-item2">
+            <div class="text2">
+                <p>YOU ARE YOU ARE IN THE INTERNATIONAL PREMIUM WAREHOUSE NOW
 WORLDWIDE SHIPPING FROM EUROPE WITH 100% DELIVERY GUARANTEE!</p>
-        </div>
+            </div>
 
+        </div>
     </div>
-</div>
 @endsection
         
  

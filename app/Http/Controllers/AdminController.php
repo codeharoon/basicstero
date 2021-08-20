@@ -194,7 +194,7 @@ class AdminController extends Controller
         if($product){
             foreach ($request->stock as $key => $item) {
                 $stock=new ProductStock();
-                $stock->whouse="w".$key+1;
+                $stock->whouse="w1";
                 $stock->product_id=$product->id;
                 $stock->price=$request->price[$key];
                 $stock->stock=$item;

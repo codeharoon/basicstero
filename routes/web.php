@@ -50,17 +50,11 @@ Route::get('/contact', function () {
 
 Route::get('addcontact',[FrontendController::class,"addcontact"])->name('addcontact');
 
-Route::get('/oralsteroids', function () {
-    return view('frontend.oralline');
-})->name('oralsteroids');
+Route::get('/oralsteroids', [FrontendController::class,'Oralline'])->name('oralsteroids');
 
-Route::get('/injectableline', function () {
-    return view('frontend.injectableline');
-})->name('injectableline');
+Route::get('/injectableline', [FrontendController::class,'injectableline'])->name('injectableline');
 
-Route::get('/hgh', function () {
-    return view('frontend.hghandpeptides');
-})->name('hgh');
+Route::get('/hgh', [FrontendController::class,'hgh'])->name('hgh');
 
 Route::get('/login', function () {
     return view('Userview.login');
@@ -107,61 +101,66 @@ Route::group(['middleware' => ['auth']],function (){
 
 
 Route::get('admin', [AdminController::class,'admin_form'])->name('admin_login');
-Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
+Route::post('admin-login', [AdminController::class,'adminLogin'])->name('submitadminlogin');
+
+Route::group(['middleware' => ['secureadmin:admin:user']],function (){
+    Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 //new url
-Route::get('all-news', [NewsController::class,'index'])->name('allnews');
-Route::get('add-news', [NewsController::class,'create'])->name('addnews');
-Route::post('save-news', [NewsController::class,'storenews'])->name('saveNews');
-Route::get('edit-news/{id?}', [NewsController::class,'editnews'])->name('editnews');
-Route::post('update-news/{id?}', [NewsController::class,'updatenews'])->name('updatenews');
-Route::get('delete-news/{id?}', [NewsController::class,'deletenews'])->name('deletenews');
+    Route::get('all-news', [NewsController::class,'index'])->name('allnews');
+    Route::get('add-news', [NewsController::class,'create'])->name('addnews');
+    Route::post('save-news', [NewsController::class,'storenews'])->name('saveNews');
+    Route::get('edit-news/{id?}', [NewsController::class,'editnews'])->name('editnews');
+    Route::post('update-news/{id?}', [NewsController::class,'updatenews'])->name('updatenews');
+    Route::get('delete-news/{id?}', [NewsController::class,'deletenews'])->name('deletenews');
 
 // discount url
-Route::get('all-discount', [AdminController::class,'alldiscount'])->name('alldiscount');
-Route::get('add-discount', [AdminController::class,'creatediscount'])->name('creatediscount');
-Route::post('save-discount', [AdminController::class,'storediscount'])->name('storediscount');
-Route::get('edit-discount/{id?}', [AdminController::class,'editdiscount'])->name('editdiscount');
-Route::post('update-discount/{id?}', [AdminController::class,'updatediscount'])->name('updatediscount');
-Route::get('delete-discount/{id?}', [AdminController::class,'deletediscount'])->name('deletediscount');
+    Route::get('all-discount', [AdminController::class,'alldiscount'])->name('alldiscount');
+    Route::get('add-discount', [AdminController::class,'creatediscount'])->name('creatediscount');
+    Route::post('save-discount', [AdminController::class,'storediscount'])->name('storediscount');
+    Route::get('edit-discount/{id?}', [AdminController::class,'editdiscount'])->name('editdiscount');
+    Route::post('update-discount/{id?}', [AdminController::class,'updatediscount'])->name('updatediscount');
+    Route::get('delete-discount/{id?}', [AdminController::class,'deletediscount'])->name('deletediscount');
 
 // faq url
-Route::get('all-faq', [AdminController::class,'allfaq'])->name('allfaq');
-Route::get('add-faq', [AdminController::class,'createfaq'])->name('createfaq');
-Route::post('save-faq', [AdminController::class,'storefaq'])->name('storefaq');
-Route::get('edit-faq/{id?}', [AdminController::class,'editfaq'])->name('editfaq');
-Route::post('update-faq/{id?}', [AdminController::class,'updatefaq'])->name('updatefaq');
-Route::get('delete-faq/{id?}', [AdminController::class,'deletefaq'])->name('deletefaq');
+    Route::get('all-faq', [AdminController::class,'allfaq'])->name('allfaq');
+    Route::get('add-faq', [AdminController::class,'createfaq'])->name('createfaq');
+    Route::post('save-faq', [AdminController::class,'storefaq'])->name('storefaq');
+    Route::get('edit-faq/{id?}', [AdminController::class,'editfaq'])->name('editfaq');
+    Route::post('update-faq/{id?}', [AdminController::class,'updatefaq'])->name('updatefaq');
+    Route::get('delete-faq/{id?}', [AdminController::class,'deletefaq'])->name('deletefaq');
 
 // report url
-Route::get('all-report', [AdminController::class,'allreport'])->name('allreport');
-Route::get('add-report', [AdminController::class,'createreport'])->name('createreport');
-Route::post('save-report', [AdminController::class,'storelabreport'])->name('storelabreport');
-Route::get('edit-report/{id?}', [AdminController::class,'editreport'])->name('editreport');
-Route::post('update-report/{id?}', [AdminController::class,'updatereport'])->name('updatereport');
-Route::get('delete-report/{id?}', [AdminController::class,'deletereport'])->name('deletereport');
+    Route::get('all-report', [AdminController::class,'allreport'])->name('allreport');
+    Route::get('add-report', [AdminController::class,'createreport'])->name('createreport');
+    Route::post('save-report', [AdminController::class,'storelabreport'])->name('storelabreport');
+    Route::get('edit-report/{id?}', [AdminController::class,'editreport'])->name('editreport');
+    Route::post('update-report/{id?}', [AdminController::class,'updatereport'])->name('updatereport');
+    Route::get('delete-report/{id?}', [AdminController::class,'deletereport'])->name('deletereport');
 
 // product url
-Route::get('all-product', [AdminController::class,'allproducts'])->name('allproducts');
-Route::get('add-product', [AdminController::class,'createproduct'])->name('createproduct');
-Route::post('save-product', [AdminController::class,'storeproduct'])->name('storeproduct');
-// Route::get('edit-report/{id?}', [AdminController::class,'editproduct'])->name('editproduct');
-// Route::post('update-report/{id?}', [AdminController::class,'updateproduct'])->name('updateproduct');
-// Route::get('delete-report/{id?}', [AdminController::class,'deleteproduct'])->name('deleteproduct');
+    Route::get('all-product', [AdminController::class,'allproducts'])->name('allproducts');
+    Route::get('add-product', [AdminController::class,'createproduct'])->name('createproduct');
+    Route::post('save-product', [AdminController::class,'storeproduct'])->name('storeproduct');
+    // Route::get('edit-report/{id?}', [AdminController::class,'editproduct'])->name('editproduct');
+    // Route::post('update-report/{id?}', [AdminController::class,'updateproduct'])->name('updateproduct');
+    // Route::get('delete-report/{id?}', [AdminController::class,'deleteproduct'])->name('deleteproduct');
 
 
-Route::get('all-warehouse', [AdminController::class,'allwarehouse'])->name('allwarehouse');
-Route::get('add-warehouse', [AdminController::class,'createwarehouse'])->name('createwarehouse');
-Route::post('save-warehouse', [AdminController::class,'storewarehouse'])->name('storewarehouse');
-Route::get('edit-warehouse/{id?}', [AdminController::class,'editwarehouse'])->name('editwarehouse');
-Route::post('update-warehouse/{id?}', [AdminController::class,'updatewarehouse'])->name('updatewarehouse');
-Route::get('delete-warehouse/{id?}', [AdminController::class,'deletewarehouse'])->name('deletewarehouse');
+    Route::get('all-warehouse', [AdminController::class,'allwarehouse'])->name('allwarehouse');
+    Route::get('add-warehouse', [AdminController::class,'createwarehouse'])->name('createwarehouse');
+    Route::post('save-warehouse', [AdminController::class,'storewarehouse'])->name('storewarehouse');
+    Route::get('edit-warehouse/{id?}', [AdminController::class,'editwarehouse'])->name('editwarehouse');
+    Route::post('update-warehouse/{id?}', [AdminController::class,'updatewarehouse'])->name('updatewarehouse');
+    Route::get('delete-warehouse/{id?}', [AdminController::class,'deletewarehouse'])->name('deletewarehouse');
 
 
 // classification url
 
-Route::get('all-classification', [AdminController::class,'allclassification'])->name('allclassification');
-Route::get('add-classification', [AdminController::class,'createclassification'])->name('createclassification');
-Route::post('save-classification', [AdminController::class,'storeclassification'])->name('storeclassification');
-Route::get('edit-classification/{id?}', [AdminController::class,'editclassification'])->name('editclassification');
-Route::post('update-classification/{id?}', [AdminController::class,'updateclassification'])->name('updateclassification');
-Route::get('delete-classification/{id?}', [AdminController::class,'deleteclassification'])->name('deleteclassification');
+    Route::get('all-classification', [AdminController::class,'allclassification'])->name('allclassification');
+    Route::get('add-classification', [AdminController::class,'createclassification'])->name('createclassification');
+    Route::post('save-classification', [AdminController::class,'storeclassification'])->name('storeclassification');
+    Route::get('edit-classification/{id?}', [AdminController::class,'editclassification'])->name('editclassification');
+    Route::post('update-classification/{id?}', [AdminController::class,'updateclassification'])->name('updateclassification');
+    Route::get('delete-classification/{id?}', [AdminController::class,'deleteclassification'])->name('deleteclassification');
+});
+

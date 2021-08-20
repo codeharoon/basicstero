@@ -14,8 +14,9 @@ class SecureAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next,$role)
     {
+        // dd($role);
         return $next($request);
     }
 }

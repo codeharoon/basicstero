@@ -28,7 +28,10 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->title}}</td>
                                     <td>{{$item->created_at->format('d-m-Y')}}</td>
-                                  
+                                    <td>
+                                        {{-- <a href="{{route('editdiscount',$item->id)}}" class="btn btn-sm btn-info float-left"><i class="fa fa-eye"></i>Edit</a> --}}
+                                        {{-- <a href="{{route('deletediscount',$item->id)}}" class="btn btn-sm btn-danger float-right"><i class="fa fa-trash">Delete</i></a> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         @else

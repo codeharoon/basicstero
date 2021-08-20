@@ -31,7 +31,7 @@
                             </a>
                         </div>
                         <h6 class="font-weight-light">Sign in as Administrator</h6>
-                        <form class="pt-3" method="post" action="">
+                        <form class="pt-3" method="post" action="{{route('submitadminlogin')}}">
                             @csrf
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">

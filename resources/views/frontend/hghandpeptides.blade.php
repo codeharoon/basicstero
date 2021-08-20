@@ -405,54 +405,59 @@
 <div class="headtext">
     <p><strong>We have 3 warehouses on your choice:</strong></p>
 
-    <p>W1 - EU-based warehouse. Worldwide shipping to any country worldwide, incl. USA, Canada, Australia, etc. For EU citizens it is EU-domestic warehouse.
-        Close to zero seizure risk. Free reshipping in case of seizures,losses, damaged items, etc. Shipping takes 6-12 days depending on destination country.</p>
-    <p>W2 - International warehouse with transit middle point in Europe. Orders are packed outside of Europe, shipped to a middle point in Europe first and rerouted to final destination
-        afterwards.
-        European tracking number. Shipping takes up to 15-21 days in average depending on destination country.Free reshipping in case of seizures,losses, damaged items, etc.</p>
-    <p>W3 - US domestic warehouse. Shipping from within the USA for any customers from the USA. Zero risks, no customs, fastest processing. Free reshipping in case of losses, damaged items,
-        etc.</p>
+    @foreach ($warehouse as $item)
+    <p>{!!$item->discription!!}</p>
+    @endforeach
 </div>
 
 <div class="box2 border1" id="main_catalog">
     <div class="box2-in">
-<div class="box2-in-item">
-<a href="https://basicstero.ws/hgh/pharmatropin">
-    <div class="box2-img">
-        <img src="/uploads/products/img_product_161_400_0_0.jpeg" alt="">
-    </div>
-</a>
-<div class="wrap1">
-    <a href="https://basicstero.ws/hgh/pharmatropin">
-        <div class="title1">PHARMATROPIN</div>
-    </a>
-    <div class="title2">
-        HUMAN GROWTH HORMONE
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="161" class="product_quantity" disabled="" value="1">
+        @foreach ($products as $item)
+        <div class="box2-in-item">
+            <a href="{{route('singleproduct',$item->id)}}">
+                <div class="box2-img">
+                    <img src="{{asset('/assets/backend/product/image/'.$item->image)}}" alt="">
+                </div>
+            </a>
+            <div class="wrap1">
+                <a href="{{route('singleproduct',$item->id)}}">
+                    <div class="title1">{{$item->title}}</div>
+                </a>
+                <div class="title2">
+                    {{$item->classification->name}}
+                </div>
+            
+                <div class="cart-item1 aligner">
+                    <div class="cart">
+                        <div class="minus2"></div>
+                        <div class="sum2">
+                            <input type="text" data-product_id="191" class="product_quantity" disabled="" value="1">
+                        </div>
+                        <div class="plus2"></div>
+                    </div>
+                </div>
+          
+                @foreach ($item->stock as $whouse)
+                <div class="price cart-button @if( $whouse->stock == 0 )
+                      {{"quantity_none"}}
+                @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+                      {{"quantity_avg"}}
+                @else
+                      {{"quantity_max"}}
+                @endif" data-product_id="191" data-warehouse="1">
+                    <span class="wh_label">W1 - @if( $whouse->stock == 0 )
+                        {{"OUT OF STOCK"}}
+                  @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+                        {{"RUNNING LOW"}}
+                  @else
+                        {{"IN STOCK"}}
+                  @endif</span> <span class="price_label">${{$whouse->price }}</span>
+                </div>
+                @endforeach
+             
             </div>
-            <div class="plus2"></div>
-        </div>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="161" data-warehouse="1">
-        <span class="wh_label">W1 - OUT OF STOCK</span> <span class="price_label">$200.00</span>
-    </div>
-
-    <div class="price cart-button quantity_avg" data-product_id="161" data-warehouse="2">
-        <span class="wh_label">W2 - RUNNING LOW</span> <span class="price_label">$200.00</span>
-    </div>
-
-    <div class="price cart-button quantity_none" data-product_id="161" data-warehouse="3">
-        <span class="wh_label">W3 - OUT OF STOCK</span> <span class="price_label">$250.00</span>
-    </div>
-</div>
-</div>
+            </div>
+        @endforeach
 </div>
 </div>
 

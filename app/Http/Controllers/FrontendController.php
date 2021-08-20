@@ -7,6 +7,7 @@ use App\Models\Discount;
 use App\Models\Faq;
 use App\Models\LabReport;
 use App\Models\Product;
+use App\Models\WareHouse;
 class FrontendController extends Controller
 {
     public function index(){
@@ -41,6 +42,28 @@ class FrontendController extends Controller
             
     }
 
+    public function Oralline(){
+        $products=Product::with('stock','classification')->where("type","=","oralsteroids")->get();
+        $warehouse=WareHouse::all();
+        return view('frontend.oralline',compact('products','warehouse'));
+    }
+
+    public function injectableline(){
+        $products=Product::with('stock','classification')->where("type","=","injectableline")->get();
+        $warehouse=WareHouse::all();
+        return view('frontend.injectableline',compact('products','warehouse'));
+    }
+
+    public function hgh(){
+        $products=Product::with('stock','classification')->where("type","=","hgh")->get();
+        $warehouse=WareHouse::all();
+        return view('frontend.hghandpeptides',compact('products','warehouse'));
+    }
+    public function purchase(){
+        $products=Product::with('stock','classification')->get();
+        $warehouse=WareHouse::all();
+        return view('frontend.hghandpeptides',compact('products','warehouse'));
+    }
    
 }
 

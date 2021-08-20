@@ -72,7 +72,7 @@
                                 <select name="type" id="" class="form-control">
                                     <option value="oralsteroids">ORAL LINE</option>
                                     <option value="injectableline">INJECTABLE LINE</option>
-                                    <option value="HGH AND PEPTIDES">HGH AND PEPTIDES</option>
+                                    <option value="hgh">HGH AND PEPTIDES</option>
                                 </select>
                                 @if($errors->has('type'))
                                     <span class="text-danger" style="font-size: 12px;">{{ $errors->first('n_title') }}</span>

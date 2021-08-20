@@ -76,7 +76,7 @@ class UserController extends Controller
     $user->zipcode=$request->zipcode;
     $user->country=$request->country;
     if($user->save()){
-        dd("profile update");
+        return redirect()->route('profile');
     }
   }
 }

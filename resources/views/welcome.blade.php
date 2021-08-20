@@ -390,43 +390,54 @@
     </div>
 </div>
 </div>
+@foreach ($products as $item)
 <div class="box2-in-item">
-<a href="#">
-    <div class="box2-img">
-        <img src="{{asset('products/img_product_191_400_0_0.png')}}" alt="">
-    </div>
-</a>
-<div class="wrap1">
     <a href="#">
-        <div class="title1">PHARMATEST PH 100 Ampules</div>
-    </a>
-    <div class="title2">
-        Testosterone Phenylpropionate
-    </div>
-
-    <div class="cart-item1 aligner">
-        <div class="cart">
-            <div class="minus2"></div>
-            <div class="sum2">
-                <input type="text" data-product_id="191" class="product_quantity" disabled="" value="1">
-            </div>
-            <div class="plus2"></div>
+        <div class="box2-img">
+            <img src="{{asset('/assets/backend/product/image/'.$item->image)}}" alt="">
         </div>
+    </a>
+    <div class="wrap1">
+        <a href="#">
+            <div class="title1">{{$item->title}}</div>
+        </a>
+        <div class="title2">
+            {{$item->classification->name}}
+        </div>
+    
+        <div class="cart-item1 aligner">
+            <div class="cart">
+                <div class="minus2"></div>
+                <div class="sum2">
+                    <input type="text" data-product_id="191" class="product_quantity" disabled="" value="1">
+                </div>
+                <div class="plus2"></div>
+            </div>
+        </div>
+  
+        @foreach ($item->stock as $whouse)
+        <div class="price cart-button @if( $whouse->stock == 0 )
+              {{"quantity_none"}}
+        @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+              {{"quantity_avg"}}
+        @else
+              {{"quantity_max"}}
+        @endif" data-product_id="191" data-warehouse="1">
+            <span class="wh_label">W1 - @if( $whouse->stock == 0 )
+                {{"OUT OF STOCK"}}
+          @elseif( $whouse->stock > 0 and $whouse->stock < 20 )
+                {{"RUNNING LOW"}}
+          @else
+                {{"IN STOCK"}}
+          @endif</span> <span class="price_label">${{$whouse->price }}</span>
+        </div>
+        @endforeach
+     
     </div>
+    </div>
+@endforeach
 
-    <div class="price cart-button quantity_max" data-product_id="191" data-warehouse="1">
-        <span class="wh_label">W1 - IN STOCK</span> <span class="price_label">$35.00</span>
-    </div>
 
-    <div class="price cart-button quantity_max" data-product_id="191" data-warehouse="2">
-        <span class="wh_label">W2 - IN STOCK</span> <span class="price_label">$35.00</span>
-    </div>
-
-    <div class="price cart-button quantity_avg" data-product_id="191" data-warehouse="3">
-        <span class="wh_label">W3 - RUNNING LOW</span> <span class="price_label">$63.00</span>
-    </div>
-</div>
-</div>
 <div class="box2-in-item">
 <a href="#">
     <div class="box2-img">

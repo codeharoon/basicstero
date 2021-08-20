@@ -149,15 +149,42 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#add-review" aria-expanded="false" aria-controls="general-pages">
-                        <span class="menu-title">Reviews</span>
+                    <a class="nav-link" data-toggle="collapse" href="#add-labreport" aria-expanded="false" aria-controls="general-pages">
+                        <span class="menu-title">LabReport</span>
                         <i class="menu-arrow"></i>
                         <i class="mdi mdi-medical-bag menu-icon"></i>
                     </a>
-                    <div class="collapse" id="add-review">
+                    <div class="collapse" id="add-labreport">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href=""> Add Review </a></li>
-                            {{--                            <li class="nav-item"> <a class="nav-link" href="#"> View Blog </a></li>--}}
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createreport')}}"> Add Report </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allreport')}}"> View Report </a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#add-warehouse" aria-expanded="false" aria-controls="general-pages">
+                        <span class="menu-title">Warehouse</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-medical-bag menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="add-warehouse">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createwarehouse')}}"> Add Warehouse </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allwarehouse')}}"> View Warehouse </a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#add-classification" aria-expanded="false" aria-controls="general-pages">
+                        <span class="menu-title">Classification</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-medical-bag menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="add-classification">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createclassification')}}"> Add Project Classifications </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allclassification')}}"> View Project classifications  </a></li>
                         </ul>
                     </div>
                 </li>
@@ -169,8 +196,8 @@
                     </a>
                     <div class="collapse" id="add-project">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href=""> Add Projects </a></li>
-                            <li class="nav-item"> <a class="nav-link" href=""> View Projects </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createproduct')}}"> Add Projects </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allproducts')}}"> View Projects </a></li>
                         </ul>
                     </div>
                 </li>
@@ -182,37 +209,11 @@
                     </a>
                     <div class="collapse" id="general-pages">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href=""> Add Amenities </a></li>
-                            <li class="nav-item"> <a class="nav-link" href=""> View Amenities </a></li>
+                            <li class="nav-item"> <a class="nav-link" href=""> View contact </a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#addPropertyType" aria-expanded="false" aria-controls="general-pages">
-                        <span class="menu-title">Property Type</span>
-                        <i class="menu-arrow"></i>
-                        <i class="mdi mdi-medical-bag menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="addPropertyType">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href=""> Add Property Type </a></li>
-                            <li class="nav-item"> <a class="nav-link" href=""> Add Property Sub Type </a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#siteData" aria-expanded="false" aria-controls="general-pages">
-                        <span class="menu-title">Site Data</span>
-                        <i class="menu-arrow"></i>
-                        <i class="mdi mdi-medical-bag menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="siteData">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="">Home Slider</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="#"> Add Additional Data </a></li>
-                        </ul>
-                    </div>
-                </li>
+
             </ul>
         </nav>
         <!-- partial -->

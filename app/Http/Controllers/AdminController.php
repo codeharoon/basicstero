@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Discount;
 use App\Models\Faq;
+use App\Models\LabReport;
+use App\Models\LabReportCategory;
+use App\Models\Product;
+use App\Models\ProductStock;
+use App\Models\WareHouse;
+use App\Models\Classification;
 class AdminController extends Controller
 {
    public function admin_form(){
@@ -97,4 +103,203 @@ class AdminController extends Controller
             return redirect()->route('allfaq');
          }
    }
+
+   // lab report
+
+   
+    public function allreport(){
+        $labreports=LabReport::all();
+        return view('backend.labreport.allreport',compact('labreports'));
+    }
+    public function createreport(){
+        $reportcategories=LabReportCategory::all();
+        return view('backend.labreport.createreport',compact('reportcategories'));
+    }
+
+    public function storelabreport(Request $request){
+        // dd($request->all());
+        $image_file = $request->file('images')[0];
+        $report_image = strtotime(now()).rand(11111,99999).'.'.$image_file->getClientOriginalExtension();
+        $image_file->move(public_path() . '/assets/backend/report/image', $report_image);
+
+        $report_input_file = $request->file('lab_report');
+        $report_file = strtotime(now()).rand(11111,99999).'.'.$report_input_file->getClientOriginalExtension();
+        $report_input_file->move(public_path() . '/assets/backend/report/file', $report_file);
+        // dd($request->all());
+        $labreport=new LabReport();
+        $labreport->title=$request->title;
+        $labreport->type=$request->type;
+        $labreport->labreportcategory_id=$request->category;
+        $labreport->thumbnail=$report_image;
+        $labreport->file=$report_file;
+        if($labreport->save()){
+            return redirect()->route('allreport');
+        }
+    }
+    public function editreport(Request $request,$id){
+        $labreport=LabReport::find($id);
+        return view('backend.labreport.editreport',compact('faq'));
+    }
+    public function updatereport(Request $request,$id){
+        // dd($id);
+        $labreport=LabReport::find($id);
+        $labreport->question=$request->n_title;
+        $labreport->answer=$request->n_description;
+        if($labreport->save()){
+            return redirect()->route('allreport');
+        }
+    }
+    public function deletereport(Request $request,$id){
+        if(LabReport::find($id)->delete()){
+            return redirect()->route('allreport');
+        }
+    }
+
+
+//    product function
+    public function allproducts(){
+        $products=Product::with('stock')->get();
+        return view('backend.products.list-view',compact('products'));
+    }
+    public function createproduct(){
+        $warehouses=WareHouse::all();
+        $classification=Classification::all();
+        return view('backend.products.add-view',compact('warehouses','classification'));
+    }
+
+    public function storeproduct(Request $request){
+        // dd($request->all());
+        $image_file = $request->file('images')[0];
+        $report_image = strtotime(now()).rand(11111,99999).'.'.$image_file->getClientOriginalExtension();
+        $image_file->move(public_path() . '/assets/backend/product/image', $report_image);
+
+        $product=[
+            "title"=>$request->n_title,
+            "weight"=>$request->n_weight,
+            "type"=>$request->type,
+            "type_classfication_id"=>$request->type_category,
+            "activity"=>$request->n_activity,
+            "delay_water"=>$request->delay_water,
+            "classification_id"=>$request->classification,
+            "hbr"=>$request->hbr,
+            "Dosage"=>$request->dosage,
+            "Hepatoxity"=>$request->hepoToxity,
+            "acne"=>$request->acne,
+            "short_description"=>$request->n_shortdescription,
+            "aromatization"=>$request->aromatization,
+            "description"=>$request->n_description,
+            "image"=>$report_image,
+        ];
+        $product=Product::create($product);
+        if($product){
+            foreach ($request->stock as $key => $item) {
+                $stock=new ProductStock();
+                $stock->whouse="w".$key+1;
+                $stock->product_id=$product->id;
+                $stock->price=$request->price[$key];
+                $stock->stock=$item;
+                $stock->save();
+            }
+        }
+        // dd($request->all());
+        if($product->save()){
+            return redirect()->route('allproducts');
+        }
+    }
+    public function editproduct(Request $request,$id){
+        $labreport=LabReport::find($id);
+        return view('backend.labreport.editreport',compact('faq'));
+    }
+    public function updateproduct(Request $request,$id){
+        // dd($id);
+        $labreport=LabReport::find($id);
+        $labreport->question=$request->n_title;
+        $labreport->answer=$request->n_description;
+        if($labreport->save()){
+            return redirect()->route('allreport');
+        }
+    }
+    public function deleteproduct(Request $request,$id){
+        if(LabReport::find($id)->delete()){
+            return redirect()->route('allreport');
+        }
+    }
+
+    /// ware house function
+
+
+    public function allwarehouse(){
+        $warehouse=WareHouse::all();
+        return view('backend.warehouse.list-view',compact('warehouse'));
+    }
+    public function createwarehouse(){
+       
+        return view('backend.warehouse.add-view');
+    }
+
+    public function storewarehouse(Request $request){
+      $wareHouse=new WareHouse();
+      $wareHouse->whouse=$request->n_title;
+      $wareHouse->discription=$request->n_description;
+      if($wareHouse->save()){
+          return redirect()->route('allwarehouse');
+      }
+    }
+    public function editwarehouse(Request $request,$id){
+        $warehouse=WareHouse::find($id);
+        return view('backend.warehouse.edit-view',compact('warehouse'));
+    }
+    public function updatewarehouse(Request $request,$id){
+        // dd($id);
+        $wareHouse=WareHouse::find($id);
+        $wareHouse->whouse=$request->n_title;
+        $wareHouse->discription=$request->n_description;
+        if($wareHouse->save()){
+            return redirect()->route('allwarehouse');
+        }
+    }
+    public function deletewarehouse(Request $request,$id){
+        if(WareHouse::find($id)->delete()){
+            return redirect()->route('allwarehouse');
+        }
+    }
+
+    // product classificatio
+
+
+    public function allclassification(){
+        $classification=Classification::all();
+        return view('backend.classification.list-view',compact('classification'));
+    }
+    public function createclassification(){
+       
+        return view('backend.classification.add-view');
+    }
+
+    public function storeclassification(Request $request){
+      $classification=new Classification();
+      $classification->name=$request->n_title;
+      if($classification->save()){
+          return redirect()->route('allclassification');
+      }
+    }
+    public function editclassification(Request $request,$id){
+        $classification=Classification::find($id);
+        return view('backend.classification.edit-view',compact('classification'));
+    }
+    public function updateclassification(Request $request,$id){
+        // dd($id);
+        $classification=Classification::find($id);
+        $classification->name=$request->n_title;
+        if($classification->save()){
+            return redirect()->route('allclassification');
+        }
+    }
+    public function deleteclassification(Request $request,$id){
+        if(Classification::find($id)->delete()){
+            return redirect()->route('allclassification');
+        }
+    }
+
+
 }

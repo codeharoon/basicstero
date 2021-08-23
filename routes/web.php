@@ -78,25 +78,25 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
     Route::post('/addpromo', [UserController::class,'promo'])->name('addpromo');
     Route::get('/order_comment', [UserController::class,'ordercomment'])->name('ordercomment');
     Route::get('/orderdetail', [UserController::class,'orderdetail'])->name('orderdetail');
-    
 
-    
+
+
     Route::get('/payment', function () {
         return view('Userview.payment');
     })->name('payment');
-    
+
     Route::get('/order', function () {
         return view('Userview.orders');
     })->name('order');
-    
+
     Route::get('/referals', function () {
         return view('Userview.referals');
     })->name('referals');
-    
+
     Route::get('/changepassword', function () {
         return view('Userview.changepassword');
     })->name('changepassword');
-    
+
 });
 
 
@@ -165,4 +165,14 @@ Route::group(['prefix' => 'admin','middleware' => ['secureadmin:admin:user']],fu
     Route::post('update-classification/{id?}', [AdminController::class,'updateclassification'])->name('updateclassification');
     Route::get('delete-classification/{id?}', [AdminController::class,'deleteclassification'])->name('deleteclassification');
 });
+Route::get('role',[AdminController::class,'viewRole'])->name('role');
+Route::get('add-role',[AdminController::class,'addRole'])->name('addRole');
+Route::get('edit-role/{id?}', [AdminController::class,'editRole'])->name('editRole');
+Route::post('update-role/{id?}', [AdminController::class,'updateRole'])->name('updateRole');
+Route::get('delete-role/{id?}', [AdminController::class,'deleteRole'])->name('deleteRole');
+
+
+Route::post('save-role',[AdminController::class,'saveRole'])->name('saveRole');
+
+
 

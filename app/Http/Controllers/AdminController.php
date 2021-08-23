@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\ProductStock;
 use App\Models\WareHouse;
 use App\Models\Classification;
+use App\Models\Role;
 class AdminController extends Controller
 {
    public function admin_form(){
@@ -31,8 +32,8 @@ class AdminController extends Controller
           return redirect()->back()->with('login-error','Invalid Email or Password! Try Again');
       }
   }
-   // discount function 
-   
+   // discount function
+
     public function alldiscount(){
         $discounts=Discount::all();
         return view('backend.discount.list-view',compact('discounts'));
@@ -107,7 +108,7 @@ class AdminController extends Controller
 
    // lab report
 
-   
+
     public function allreport(){
         $labreports=LabReport::all();
         return view('backend.labreport.allreport',compact('labreports'));
@@ -234,7 +235,7 @@ class AdminController extends Controller
         return view('backend.warehouse.list-view',compact('warehouse'));
     }
     public function createwarehouse(){
-       
+
         return view('backend.warehouse.add-view');
     }
 
@@ -273,7 +274,7 @@ class AdminController extends Controller
         return view('backend.classification.list-view',compact('classification'));
     }
     public function createclassification(){
-       
+
         return view('backend.classification.add-view');
     }
 
@@ -299,6 +300,43 @@ class AdminController extends Controller
     public function deleteclassification(Request $request,$id){
         if(Classification::find($id)->delete()){
             return redirect()->route('allclassification');
+        }
+    }
+    public function viewRole(){
+       $role =  Role::all();
+        return view('backend.Role.view-role',compact('role'));
+
+    }
+    public function addRole(){
+        return view('backend.Role.add-role');
+
+    }
+    public function saveRole(Request $request){
+
+        $role = new Role();
+        $role->name = $request->n_title;
+        $role->save();
+        return redirect()->route('role');
+
+
+
+    }
+    public function editRole(Request $request,$id){
+        $role = Role::find($id);
+        return view('backend.role.edit-role',compact('role'));
+
+    }
+    public function updateRole(Request $request,$id){
+       // dd($id);
+        $role = Role::find($id);
+        $role->name = $request->n_title;
+        $role->save();
+        return redirect()->route('role');
+
+    }
+    public function deleteRole($id){
+        if(Role::find($id)->delete()){
+            return redirect()->route('role');
         }
     }
 

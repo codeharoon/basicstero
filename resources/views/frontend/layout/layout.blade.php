@@ -9,7 +9,7 @@
     <title>Buy steroids online | Best anabolic steroids for bodybuilding | Cheap steroids for sale</title>
     <meta name="description" content="Europe warehouse: steroids for sale. Anabolic shop Basicstero sells all types of steroids online. Buy best anabolic steroids by Pharmacom Labs for bodybuilding">
     <meta name="keywords" content="buy steroids online">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!--style-->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -203,6 +203,11 @@
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/toastr.js')}}" type="text/javascript"></script>
 <script>
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
 toastr.options = {
 "closeButton": true,
 "debug": false,
@@ -221,12 +226,14 @@ toastr.options = {
 "hideMethod": "fadeOut"
 };
 
-$.ajaxSetup({headers: {'X-CSRF-TOKEN': 'M4psU57wO10E8Cf7Wkd106TdXqHsMyrhtwvccSR8'}});
+
 
 $(document).ready(function () {
 $('body').on('click', '.cart-button, .cart-trigger', function () {
-    id = $(this).data('product_id');
-    wh = $(this).data('warehouse');
+    let id = $(this).data('product_id');
+    let wh = $(this).data('warehouse');
+    let quantity=1;
+
     if ($('.product_quantity', $(this).parent().parent()).val() > 0) quantity = $('.product_quantity', $(this).parent().parent()).val();
     else {
         quantity = 1;
@@ -244,21 +251,43 @@ $('body').on('click', '.cart-button, .cart-trigger', function () {
     });
 
 function addToCart(product_id, quantity, warehouse) {
-$.post('/add_to_cart', {product_id: product_id, quantity: quantity, warehouse: warehouse}, function (response) {
-    data = JSON.parse(response);
-    $('#cart_quantity').html(data.quantity);
+       
+        $.ajax({
+           headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           },
 
-    toastr.success("Product added to cart");
-}).fail(function (data) {
-    tx = JSON.parse(data.responseText);
-    toastr.error(tx.error);
-    prod = $('.product_quantity[data-product_id="' + product_id + '"]');
-    $.each(prod, function () {
-        if ($(this).data('warehouse') == warehouse) {
-            $(this).val(0);
-        }
-    });
-});
+           type:'POST',
+           url:"{{ route('addtocart') }}",
+           data: {product_id: product_id, quantity: quantity, warehouse: warehouse,},
+           success:function(data){
+               if(data.error){
+                 toastr.error(data.message);
+                 prod = $('.product_quantity[data-product_id="' + product_id + '"]');
+               }
+               else{
+                $('#cart_quantity').html(data.quantity);
+                console.log(data);
+               }
+           }
+        });
+    // console.log("inside");
+// let _token   = $('meta[name="csrf-token"]').attr('content');
+// $.post('/add_to_cart', {product_id: product_id, quantity: quantity, warehouse: warehouse, _token: _token}, function (response) {
+//     let data = JSON.parse(response);
+//     console.log(data);
+//     // $('#cart_quantity').html(data.quantity);
+//     toastr.success("Product added to cart");
+// }).fail(function (data) {
+//     tx = JSON.parse(data.responseText);
+//     toastr.error(tx.error);
+//     prod = $('.product_quantity[data-product_id="' + product_id + '"]');
+//     $.each(prod, function () {
+//         if ($(this).data('warehouse') == warehouse) {
+//             $(this).val(0);
+//         }
+//     });
+// });
 }
 
 $(document).ready(function () {
@@ -334,10 +363,10 @@ ga('send', 'pageview');
 <script type='text/javascript' src='{{asset('js/jquery.countdown.js')}}'></script>
 <script>
 $(document).ready(function () {
-    $('.currency_select').change(function () {
-        val = $(this).val();
-        window.location = '/set_currency/' + val;
-    })
+    // $('.currency_select').change(function () {
+    //     val = $(this).val();
+    //     window.location = '/set_currency/' + val;
+    // })
 });
 </script>
 <div id="overlay"></div>

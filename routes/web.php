@@ -22,9 +22,7 @@ Route::get('/singleproduct/{id?}',[FrontendController::class,'singleproduct'])->
 
 Route::get('/news', [NewsController::class,'showallnews'])->name('news');
 
-Route::get('/purchase', function () {
-    return view('frontend.purchase');
-})->name('purchase');
+Route::get('/purchase', [FrontendController::class,'purchase'])->name('purchase');
 
 Route::get('/discount',[FrontendController::class,'showalldiscount'] )->name('discount');
 
@@ -60,6 +58,8 @@ Route::get('/login', function () {
     return view('Userview.login');
 })->name('login');
 
+Route::post('add_to_cart',[FrontendController::class,'addtocart'] )->name('addtocart');
+Route::get('totalcart',[FrontendController::class,'totalcart'] )->name('totalcart');
 
 // login in user url
 
@@ -68,14 +68,16 @@ Route::post('/register',[UserController::class,'register'])->name('register');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
 
-Route::group(['middleware' => ['auth']],function (){
+Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
     Route::post('/storepassword',[UserController::class,'storepassword'])->name('storepassword');
     Route::get('/profile', [UserController::class,'get_profile'])->name('profile');
     Route::post('/updateprofile',[UserController::class,'updateprofile'])->name('updateprofile');
 
-    Route::get('/cart', function () {
-        return view('Userview.cart');
-    })->name('cart');
+    Route::get('/cart', [UserController::class,'viewcart'])->name('cart');
+    Route::get('/promo', [UserController::class,'get_promo'])->name('promo');
+    Route::post('/addpromo', [UserController::class,'promo'])->name('addpromo');
+    Route::get('/order_comment', [UserController::class,'ordercomment'])->name('ordercomment');
+    Route::get('/orderdetail', [UserController::class,'orderdetail'])->name('orderdetail');
     
 
     
@@ -103,7 +105,7 @@ Route::group(['middleware' => ['auth']],function (){
 Route::get('admin', [AdminController::class,'admin_form'])->name('admin_login');
 Route::post('admin-login', [AdminController::class,'adminLogin'])->name('submitadminlogin');
 
-Route::group(['middleware' => ['secureadmin:admin:user']],function (){
+Route::group(['prefix' => 'admin','middleware' => ['secureadmin:admin:user']],function (){
     Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 //new url
     Route::get('all-news', [NewsController::class,'index'])->name('allnews');

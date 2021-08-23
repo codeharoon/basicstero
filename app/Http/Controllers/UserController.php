@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Product;
 class UserController extends Controller
 {
    public function login(Request $request){
@@ -78,5 +79,41 @@ class UserController extends Controller
     if($user->save()){
         return redirect()->route('profile');
     }
+  }
+  public function viewcart(Request $request){
+    $data=$request->session()->get('cart_items');
+    $product=0;
+    foreach ($data as $key => $value) {
+       $product=Product::where('id','=',$value)->get();  
+    }
+    return view('Userview.cart',compact('product','data'));
+  }
+
+  public function get_promo(){
+    $user=User::find(Auth::user()->id);
+    return view('Userview.promo',compact('user'));
+  }
+
+  public function promo(){
+    return redirect()->route('ordercomment');
+    $user=User::find(Auth::user()->id);
+    $user->full_name=$request->fullname;
+    $user->addressline1=$request->address1;
+    $user->addressline2=$request->address2;
+    $user->city=$request->city;
+    $user->state=$request->state;
+    $user->zipcode=$request->zipcode;
+    $user->country=$request->country;
+    if($user->save()){
+        return redirect()->route('profile');
+    }
+  }
+
+  public function ordercomment(){
+    return view('Userview.ordercomment');
+  }
+
+  public function orderdetail(){
+    return view('UserView.orderdetail');
   }
 }

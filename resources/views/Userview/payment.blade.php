@@ -852,49 +852,49 @@
             <div style="padding:20px 20px 5px 20px;border-radius:10px;background:#fff;">
                 <form class="get_payment_info" method="POST" action="https://basicstero.ws/user/receive_pocket_data">
                     <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">                        <p class="pay_method_button ">
-                        <label for="p-bitcoin"><img src="/static/imgold/bitcoin_logo.png" width="50"></label>
+                        <label for="p-bitcoin"><img src="{{asset('payments/bitcoin_logo.png')}}" width="50"></label>
                         <input type="radio" id="p-bitcoin" name="payment_method"
                                value="3">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-BitcoinCash"><img src="/static/imgold/BitcoinCash.png"></label>
+                        <label for="p-BitcoinCash"><img src="{{asset('payments/BitcoinCash.png')}}"></label>
                         <input type="radio" id="p-BitcoinCash" name="payment_method"
                                value="5">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Litecoin"><img src="/static/imgold/Litecoin.png"></label>
+                        <label for="p-Litecoin"><img src="{{asset('payments/Litecoin.png')}}"></label>
                         <input type="radio" id="p-Litecoin" name="payment_method"
                                value="6">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Ethereum"><img src="/static/imgold/Ethereum.png"></label>
+                        <label for="p-Ethereum"><img src="{{asset('payments/Ethereum.png')}}"></label>
                         <input type="radio" id="p-Ethereum" name="payment_method"
                                value="7">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Tether"><img src="/static/imgold/tether.png"></label>
+                        <label for="p-Tether"><img src="{{asset('payments/tether.png')}}"></label>
                         <input type="radio" id="p-Tether" name="payment_method"
                                value="10">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Dash"><img src="/static/imgold/Dash.png"></label>
+                        <label for="p-Dash"><img src="{{asset('payments/Dash.png')}}"></label>
                         <input type="radio" id="p-Dash" name="payment_method"
                                value="8">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-western"><img src="/static/imgold/pay-western.png" width="50"></label>
+                        <label for="p-western"><img src="{{asset('payments/pay-western.png')}}" width="50"></label>
                         <input type="radio" id="p-western" name="payment_method"
                                value="1">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-moneygram"><img src="/static/imgold/moneygram.png" width="50"></label>
+                        <label for="p-moneygram"><img src="{{asset('payments/moneygram.png')}}" width="50"></label>
                         <input type="radio" id="p-moneygram" name="payment_method"
                                value="2">
                     </p>

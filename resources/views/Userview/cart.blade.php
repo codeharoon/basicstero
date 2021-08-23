@@ -408,6 +408,254 @@
     </div>
 </div>
 
+
+@if ($product)
+<div class="box5 border1">
+    <div class="box5-item1 padding-left">
+        <div class="wrap6">
+            <div class="wrap6-item1">
+                <h3 class="order-header" style="display:block">
+                                                Your order
+                                        </h3>
+            </div>
+                                <div class="wrap6-item2">
+                    <a href="https://basicstero.ws/clear_cart">
+                                                        <div class="button5">Clear cart</div>
+                                                </a>
+                </div>
+                        </div>
+        <div class="attention" style="display:none">
+            <p>Your order can not be processed.<br>
+                Your shopping card has products available on different warehouses. Only items from one single warehouse can be shipped within one and the same order.</p>
+
+        </div>
+        <div class="attention2 price_hider" style="display:none">
+            <p>Minimum order ammount - $0</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="box17 border1">
+    <div class="box17-in">
+        <div class="wrap7">
+            
+                <div class="title15">Select payment method:</div>
+
+                <form class="form-delivery" action="/set_payment_method" method="POST">
+                    <input type="hidden" name="_token" value="WtIS4OT6NcJ2xcdV0FL3i56M2c3xvGRs5lOWSfzc">                        <p class="pay_method_button active_payment ">
+                        <label for="p-bitcoin"><img src="/static/imgold/bitcoin_logo.png" width="50"></label>
+                        <input type="radio" id="p-bitcoin" name="payment_method"
+                               value="Bitcoin">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-BitcoinCash"><img src="/static/imgold/BitcoinCash.png"></label>
+                        <input type="radio" id="p-BitcoinCash" name="payment_method"
+                               value="BitcoinCash">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-Litecoin"><img src="/static/imgold/Litecoin.png"></label>
+                        <input type="radio" id="p-Litecoin" name="payment_method"
+                               value="Litecoin">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-Ethereum"><img src="/static/imgold/Ethereum.png"></label>
+                        <input type="radio" id="p-Ethereum" name="payment_method"
+                               value="Ethereum">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-Tether"><img src="/static/imgold/tether.png"></label>
+                        <input type="radio" id="p-Tether" name="payment_method"
+                               value="Tether">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-Dash"><img src="/static/imgold/Dash.png"></label>
+                        <input type="radio" id="p-Dash" name="payment_method"
+                               value="Dash">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-western"><img src="/static/imgold/pay-western.png" width="50"></label>
+                        <input type="radio" id="p-western" name="payment_method"
+                               value="Western Union">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-moneygram"><img src="/static/imgold/moneygram.png" width="50"></label>
+                        <input type="radio" id="p-moneygram" name="payment_method"
+                               value="MoneyGram">
+                    </p>
+
+                    <p class="pay_method_button ">
+                        <label for="p-balance" style="line-height:83px;position:relative;">
+                            <span>&nbsp;</span>
+                            <span style="position:absolute;top:-5px;left:0;width:100%;text-align:center;">Pay from balance</span>
+                        </label>
+                        <input type="radio" id="p-balance" name="payment_method"
+                               value="balance">
+                    </p>
+
+
+                    <br clear="all">
+
+
+                </form>
+
+                <style>
+                    .col-md-9 {
+                        width: calc(75% - 20px);
+                        float: left;
+                        margin-right: 20px;
+                    }
+
+                    .col-md-3 {
+                        width: 25%;
+                        float: left;
+                    }
+
+                    .promocode {
+                        width: 100%;
+                        height: 34px;
+                        line-height: 34px;
+                        border-radius: 5px;
+                        padding: 0 10px;
+                        border: 1px solid #000;
+                    }
+
+                    .promocode-apply {
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                    .promocode-holder {
+                        margin: 15px 0;
+                    }
+
+                    .promocode-status {
+                        color: #089dea;
+                        margin-top: 10px;
+                    }
+                </style>
+                <div class="title15">Promocode</div>
+                <form method="POST" action="https://basicstero.ws/apply_promocode">
+                    <input type="hidden" name="_token" value="WtIS4OT6NcJ2xcdV0FL3i56M2c3xvGRs5lOWSfzc">
+                    <div class="promocode-holder">
+                        <div class="col-md-9 col">
+                            <input type="text" class="promocode" name="promocode" value="">
+                        </div>
+                        <div class="col-md-3 col">
+                            <input type="submit" class="button4 promocode-apply" value="apply promocode">
+                        </div>
+                        <br clear="all">
+                        <div class="promocode-status"></div>
+                    </div>
+                </form>
+
+                <div class="title15">Selected products</div>
+
+                    <div class="box17-in-item" id="product_114">
+                        <div class="box17-img">
+                            <a href=""><img src="/uploads/products/img_product_114_150_0_0.jpeg" alt=""></a>
+                        </div>
+                        <div class="box17-info">
+                            <div class="title16">PHARMATREN H 100</div>
+                            <div class="text5 margin5">
+                                <p>Trenbolone hexahydrobenzylcarbonate</p>
+                                <p>100 mg/ml</p>
+                                <strong>Warehouse 1</strong>
+                            </div>
+                        </div>
+                        <div class="cart-wrap2">
+                            <div class="cart-item1">
+                                <div class="cart">
+                                    <div class="minus2"></div>
+                                    <div class="sum2">
+                                        <input type="text" data-product_id="114" disabled value="1">
+                                    </div>
+                                    <div class="plus2"></div>
+                                </div>
+                            </div>
+                            <div class="cart-item2">
+                                <div class="cart-title2">
+                                    <span id="product_price_114">$68.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box17-close">
+                            <a href="https://basicstero.ws/del_from_cart/114">
+                                <img src="/static/img/cross.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                                            </div>
+                        <div class="wrap8">
+                <div class="delivery">
+                    <div class="delivery-item">
+                        <div class="text5">
+                            <p>Select shipping method:</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item">
+                        <form>
+                            <select name="" id="" value="" class="my_select_form">
+                                <option value="1" selected class="option">Priority Mail worldwide</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="delivery-item">
+                        <div class="cart-title2">
+                            <span id="delivery_price">$43.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                <div class="wrap9">
+                    <div class="title15" style="margin-right:135px;font-size:26px;">Bitcoin discount - 5%</div>
+                </div>
+                            <div class="wrap9">
+                <div class="all-sum">
+                    <div class="all-sum-item">
+                        <div class="title15">Total</div>
+                    </div>
+                    <div class="all-sum-item">
+                        <div class="cart-title2">
+                            <span id="total_price">$107.60</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap10 price_hider2" style="display:block">
+                <div class="further">
+                    <a href="{{route('promo')}}">
+                        <div class="further-item1">
+                            <div class="button4">Next</div>
+                        </div>
+                    </a>
+                    <div class="further-item2">
+                        <div class="text5">
+                            <p>Address</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+    <div class="box14-in-item margin1">
+        <div class="title17">Promotions</div>
+    </div>
+    <div class="box14-in-item">
+        <div class="title17">Address</div>
+    </div>
+    <div class="box14-in-item">
+        <div class="title17">Confirmation</div>
+    </div>
+</div>
+@else
 <div class="box17 border1">
     <div class="box17-in">
         <div class="wrap7">
@@ -425,4 +673,9 @@
         <div class="title17">Confirmation</div>
     </div>
 </div>
+@endif
+
+
+
+
 @endsection

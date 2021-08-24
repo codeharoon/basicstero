@@ -32,6 +32,14 @@
                         @csrf
                         <p class="card-description"> Product Details </p>
                         <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Check Code</label>
+                                <input type="text" name="n_code" class="form-control" placeholder="Enter Check Code">
+                                @if($errors->has('n_code'))
+                                    <span class="text-danger" style="font-size: 12px;">{{ $errors->first('n_title') }}</span>
+                                @endif
+                            </div>
+                        <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Title</label>
                                 <input type="text" name="n_title" class="form-control" placeholder="Enter Title">

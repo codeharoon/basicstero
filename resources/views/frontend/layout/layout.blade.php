@@ -268,6 +268,7 @@ function addToCart(product_id, quantity, warehouse) {
                else{
                 $('#cart_quantity').html(data.quantity);
                 console.log(data);
+                toastr.success("Product added to cart");
                }
            }
         });

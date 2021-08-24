@@ -442,7 +442,7 @@
             <div class="title18">Promotions</div>
         </a>
     </div>
-    <form action="{{route('addpromo')}}" method="POST">
+    <form action="{{route('submitpromo')}}" method="POST">
         <div class="box17-in">
             <div class="wrap7">
                 <div class="title19">Address</div>
@@ -459,36 +459,36 @@
                             <div class="box12-item4">
                                 <span class="mobile-only">Full name *</span>
                                 <input type="text" id="form-input-line" value="Haroon iqbal"
-                                       class="form-input-line2" name="order_address[fio]" value="{{$user->full_name}}" placeholder="Ф.И.О. *" autocomplete="off">
+                                       class="form-input-line2" name="fullname" value="{{$user->full_name}}" placeholder="Ф.И.О. *" autocomplete="off">
                             </div>
                             <div class="box12-item4 ">
                                 <span class="mobile-only">E-mail *</span>
                                 <input type="text" id="form-input-line" value="harooniqbal585@gmail.com"
-                                       class="form-input-line2" name="order_address[email]" value="{{$user->email}}" placeholder="E-mail *" autocomplete="off">
+                                       class="form-input-line2" name="email" value="{{$user->email}}" placeholder="E-mail *" autocomplete="off">
                             </div>
 
                             <div class="box12-item5">
                                 <span class="mobile-only">Address line 1 *</span>
                                 <input type="text" id="form-input-line" value="Lahore, pakistan"
-                                       class="form-input-line2" name="order_address[address_street]" value="{{$user->addressline1}}" placeholder="Address line 1 *" autocomplete="off">
+                                       class="form-input-line2" name="address1" value="{{$user->addressline1}}" placeholder="Address line 1 *" autocomplete="off">
                             </div>
                             <div class="box12-item5 moved">
                                 <span class="mobile-only">Address line 2 (optional)</span>
                                 <input type="text" id="form-input-line" value=""
-                                       class="form-input-line2" name="order_address[address_street2]" value="{{$user->addressline1}}" placeholder="Address line 2 (optional)" autocomplete="off">
+                                       class="form-input-line2" name="address2" value="{{$user->addressline1}}" placeholder="Address line 2 (optional)" autocomplete="off">
                             </div>
 
                             <div class="box12-item5">
                                 <span class="mobile-only">City *</span>
                                 <input type="text" id="form-input-line" value="Lahore"
-                                       class="form-input-line2" name="order_address[address_city]" value="{{$user->city}}" placeholder="City *" autocomplete="off">
+                                       class="form-input-line2" name="city" value="{{$user->city}}" placeholder="City *" autocomplete="off">
                             </div>
 
 
                             <div class="box12-item5 region1 moved">
                                 <span class="mobile-only">State / Region *</span>
                                 <input type="text" id="form-input-line" value="punjab"
-                                       class="form-input-line2 text_region" name="order_address[address_region]" value="{{$user->state}}" placeholder="State / Region" autocomplete="off">
+                                       class="form-input-line2 text_region" name="state" value="{{$user->state}}" placeholder="State / Region" autocomplete="off">
                             </div>
 
                             <div style="display:none;" class="box12-item5 region2 moved">
@@ -562,7 +562,7 @@
                             <div class="box12-item5">
                                 <span class="mobile-only">Zip Code *</span>
                                 <input type="text" id="form-input-line" value="30936"
-                                       class="form-input-line2" name="order_address[address_index]" value="{{$user->zipcode}}" placeholder="Zip Code *" autocomplete="off">
+                                       class="form-input-line2" name="zipcode" value="{{$user->zipcode}}" placeholder="Zip Code *" autocomplete="off">
                             </div>
                             <div class="box12-item5 moved">
                                 <span class="mobile-only">Choose your country *</span>

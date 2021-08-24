@@ -77,7 +77,7 @@
     }
 
     .icon-in-item.user {
-        background: url(/static/img/profile.png) no-repeat top center;
+        background: url({{asset('img/profile.png')}}) no-repeat top center;
         height: 15px;
         margin-left: 7px;
     }
@@ -92,11 +92,11 @@
     }
 
     .icon-in-item.chat {
-        background: url(/static/img/bubbles.png) no-repeat center center;
+        background: url({{asset('img/bubbles.png')}}) no-repeat center center;
     }
 
     .icon-in-item.top_cart {
-        background: url(/static/img/cart.png) no-repeat center center;
+        background: url({{asset('img/cart.png')}}) no-repeat center center;
     }
 
     .quantity-external {
@@ -190,7 +190,7 @@
 
     .cart-button.price {
         padding-right: 40px;
-        background-image: url(/static/img/cart_dark.png) !important;
+        background-image: url({{asset('img/cart_dark.png')}}) !important;
         background-position: center right 10px !important;
         background-repeat: no-repeat !important;
         white-space: nowrap !important;
@@ -198,7 +198,7 @@
     }
 
     .cart-button.price:hover {
-        background-image: url(/static/img/cart.png) !important;
+        background-image: url({{asset('img/cart.png')}}) !important;
     }
 
     .quantity-external {
@@ -313,65 +313,77 @@
     }
 </style>
     <style>
-    .priceline {
-        font-size: 15px;
-        padding: 10px 0;
-        border-bottom: 1px solid #bebebe;
+    .box17-in-item.warning .title16 {
+        color: #ff0000;
     }
 
-    .priceline:last-of-type {
-        border-bottom: 0;
-        font-size: 18px;
+    .box17-in-item.warning .cart-title2 {
+        color: #ff0000;
     }
 
-    .text5 p {
-        margin-bottom: 15px;
+    .attention2 {
+        margin: 30px 0 20px;
+        color: #f51632;
+        font-family: 'SourceSansPro-Light', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 36px;
+        padding: 15px 15px 15px;
+        background-color: rgba(245, 22, 50, 0.05);
+        border: 1px solid #f51632;
     }
 
-    .balance-trigger {
-        margin-bottom: 15px;
+    .pay_method_button {
+        margin-right: 20px !important;
+        position: relative;
+        display: inline-block;
+    }
+
+    .pay_method_button label {
+        width: 150px !important;
+        height: 75px !important;
+        position: relative;
+        display: block;
+        text-align: center;
+        padding: 15px !important;
         cursor: pointer;
     }
 
-    .hider-balance {
+    .pay_method_button label img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+
+    input[type="radio"] {
         display: none;
     }
 
-    .gray-block2 {
-        padding: 0 15px 15px 15px;
-        font-family: 'SourceSansPro-Regular', sans-serif !important;
+    .pay_method_button {
+        border: 1px solid #0f0f0f;
+        padding: 3px;
+        margin-right: 50px !important;
+        margin-left: 0 !important;
+        border-radius: 5px;
+        margin-bottom: 15px;
     }
 
-    .wrapper-small-block {
-        margin-top: 15px;
-        font-family: 'SourceSansPro-Regular', sans-serif;
-        padding: 15px;
-
-    }
-
-    .wrap11 {
-        font-family: 'SourceSansPro-Regular', sans-serif !important;
-    }
-
-    .wrap11 p {
-        font-family: 'SourceSansPro-Regular', sans-serif !important;
-    }
-
-    .box17-img {
+    .active_payment {
+        border: 3px solid #00b4ec;
         padding: 0;
-        flex-grow: 0;
     }
 
-    .box17-in-item {
-        margin: 20px 0;
+    .active_payment label {
+        padding: 13px !important;
+    }
+
+    .form-delivery {
+        width: 100%;
+        margin: 20px 0 45px 0;
     }
 </style>
-<style>
-    .personal_area {
-        text-shadow: 2px 2px 2px #059dea;
-        font-size: 18px !important;
-    }
-</style>
+
 @endsection
 
 @section('content')
@@ -379,98 +391,42 @@
     <div class="box5-item1 padding-left">
         <div class="wrap6">
             <div class="wrap6-item1">
-                <h3 class="order-header" style="display:block">
+                <h3 class="order-header" style="display:none">
                                                 Your order
                                         </h3>
             </div>
-                                <div class="wrap6-item2">
-                    <a href="https://basicstero.ws/clear_cart">
-                                                        <div class="button5">Clear cart</div>
-                                                </a>
-                </div>
                         </div>
+        <div class="attention" style="display:none">
+            <p>Your order can not be processed.<br>
+                Your shopping card has products available on different warehouses. Only items from one single warehouse can be shipped within one and the same order.</p>
+
+        </div>
+        <div class="attention2 price_hider" style="display:none">
+            <p>Minimum order ammount - $0</p>
+        </div>
+
     </div>
 </div>
 <div class="box17 border1">
-    <div class="box14-in-item">
-        <a href="https://basicstero.ws/order/cart">
-            <div class="title18">Selected products</div>
-        </a>
-    </div>
-    <div class="box14-in-item">
-        <a href="https://basicstero.ws/order/promo">
-            <div class="title18">Promotions</div>
-        </a>
-    </div>
-    <div class="box14-in-item">
-        <a href="https://basicstero.ws/order/address">
-            <div class="title18">Address</div>
-        </a>
-    </div>
-    
-    <div class="box14-in-item">
-        <a>
-            <div class="title18" style="border-bottom:0;">Confirmation</div>
-        </a>
-    </div>
     <div class="box17-in">
-        
-
-        <form method="POST" class="order_form" action="{{route('submitorder')}}">
-           @csrf
-            <input type="hidden" name="custom_token" value="5772801151">
-            <div class="wrap11" style="padding:20px;">
-
-                <div class="box18-in">
-
-                    <div class="box18-in-item">
-
-                        <div class="gray-block2" style="font-size:22px;margin-bottom:10px;">
-                            Attention!
+        <div class="wrap7">
+                                <div class="title15">Your cart is empty</div>
                         </div>
-
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            Please read our ordering terms carefully!
-                        </div>
-
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            1. SEIZED ORDERS ARE RESHIPPED ONLY ONE TIME!
-                        </div>
-
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            2. INTERNATIONAL ORDERS ARE NOT RESHIPPED FROM DOMESTIC WAREHOUSE AND NO DOMESTIC STORE CREDIT IS PROVIDED (FOR USA-BASED CUSTOMERS)! NO EXCEPTIONS!
-                        </div>
-
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            3.COMPLAINS REGARDING BROKEN OR MISSING ITEMS ARE ACCEPTED ONLY IF UNPACKING VIDEO IS PROVIDED! ON VIDEO SHOULD BE CLEARLY SEEN THE FRONT SIDE OF THE PACKAGE,
-                            ADDRESS,NAME.
-                            VIDEO OR PICTURES WITH ALREADY OPENED PACKAGES ARE NOT ACCEPTED!
-                        </div>
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            <textarea name="comment" class="form-input-area" placeholder="If you have any comment to your order, please submit it here"></textarea>
-                        </div>
-
-
-                        <div class="gray-block2" style="font-size:16px;margin-bottom:10px;">
-                            By confirming this order you agree with our ordering terms. Post-sale support is carried out according to these terms. If you don`t agree with our ordering conditions,
-                            you should not confirm your order.
-                        </div>
-
-                        <div class="further" style="margin-left:15px;">
-                            <div class="further-item1">
-                                <input type="submit" class="button6 unclick" value="I confirm my order">
-                            </div>
-                        </div>
-
-
-                    </div>
-
                 </div>
 
-            </div>
-
-        </form>
+    <div class="box14-in-item margin1">
+        <div class="title17">Promotions</div>
     </div>
-
+    <div class="box14-in-item">
+        <div class="title17">Address</div>
+    </div>
+    <div class="box14-in-item">
+        <div class="title17">Confirmation</div>
+    </div>
 </div>
+
+
+
+
+
 @endsection

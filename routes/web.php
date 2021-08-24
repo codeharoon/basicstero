@@ -76,10 +76,11 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
 
     Route::get('/cart', [UserController::class,'viewcart'])->name('cart');
     Route::get('/promo', [UserController::class,'get_promo'])->name('promo');
-    Route::post('/addpromo', [UserController::class,'promo'])->name('addpromo');
+    Route::post('/submitpromo', [UserController::class,'submitpromo'])->name('submitpromo');
     Route::get('/order_comment', [UserController::class,'ordercomment'])->name('ordercomment');
     Route::get('/orderdetail/{ordernumber?}', [UserController::class,'orderdetail'])->name('orderdetail');
     Route::get('/deleteorder/{ordernumber?}', [UserController::class,'deleteorder'])->name('deleteorder');
+    Route::post('/submitorder', [UserController::class,'submitorder'])->name('submitorder');
     
 
 
@@ -106,7 +107,7 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
 Route::get('admin', [AdminController::class,'admin_form'])->name('admin_login');
 Route::post('admin-login', [AdminController::class,'adminLogin'])->name('submitadminlogin');
 
-Route::group(['prefix' => 'admin','middleware' => ['secureadmin:admin:user']],function (){
+Route::group(['prefix' => 'admin','middleware' => ['auth','secureadmin:admin']],function (){
     Route::get('dashboard', [AdminController::class,'dashboard'])->name('dashboard');
 //new url
     Route::get('all-news', [NewsController::class,'index'])->name('allnews');

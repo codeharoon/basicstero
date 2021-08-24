@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\OrderProduct;
 class UserController extends Controller
 {
    public function login(Request $request){
@@ -82,14 +83,27 @@ class UserController extends Controller
     }
   }
   public function viewcart(Request $request){
-    $data=$request->session()->get('cart_items');
-    $ware=$request->session()->get('ware_house');
-    $product=[];
-    foreach ($data as $key => $value) {
-       $product[]=Product::where('id','=',$key)->get();  
+    if($request->session()->has('cart_items')){
+      $data=$request->session()->get('cart_items');
+      if(sizeof($data)>0){
+        $ware=$request->session()->get('ware_house')["warehouse"];
+        $product=[];
+        foreach ($data as $key => $value) {
+           $product[]=Product::where('id','=',$key)->get();  
+        }
+       // dd($product);
+        return view('Userview.cart',compact('product','data','ware'));
+      }
+      else{
+        return view('Userview.emptycart');
+      }
     }
-   // dd($product);
-    return view('Userview.cart',compact('product','data'));
+    else{
+      return view('Userview.emptycart');
+    }
+   
+    
+   
   }
 
   public function get_promo(){
@@ -97,8 +111,7 @@ class UserController extends Controller
     return view('Userview.promo',compact('user'));
   }
 
-  public function promo(){
-    return redirect()->route('ordercomment');
+  public function submitpromo(Request $request){
     $user=User::find(Auth::user()->id);
     $user->full_name=$request->fullname;
     $user->addressline1=$request->address1;
@@ -108,12 +121,67 @@ class UserController extends Controller
     $user->zipcode=$request->zipcode;
     $user->country=$request->country;
     if($user->save()){
-        return redirect()->route('profile');
+        return redirect()->route('ordercomment');
     }
   }
 
   public function ordercomment(){
     return view('Userview.ordercomment');
+  }
+
+  public function submitorder(Request $request){
+        // dd($request->all());
+        $total_price=0;
+        $product_total=0;
+        $data=$request->session()->get('cart_items');
+    
+        $ware=$request->session()->get('ware_house')["warehouse"];
+        $product=[];
+        foreach ($data as $key => $value) {
+            $nproduct=Product::where('id','=',$key)->first();  
+            $product[]=[
+              "title"=>$nproduct->title,
+              "quantity"=>$value,
+              "price"=>$nproduct->stock[$ware-1]->price*$value,
+            ];
+            $product_total=$product_total+$nproduct->stock[$ware-1]->price*$value;
+            
+        }
+        $order=[
+          "order_number"=>"E6C2EGMX",
+          "status"=>"waiting for payment",
+          "user_id"=>Auth::user()->id,
+          "walletaddress"=>"1EpCtvY7gnV7e9NmeJ3XYZAuvQcU7LqnNE",
+          "comment"=>$request->comment,
+          "producttotal"=>$product_total,
+          "discount"=>5.00,
+          "delivery"=>43.00,
+          "currentbalance"=>0.00,
+          "ordertotal"=>$product_total+43.00,
+          "bitcoin"=>0.005103830,
+          "amountleft"=>$product_total+43.00,
+          "currency"=>"USD",
+        ];
+        $order=Order::create($order);
+        // dd($order->id);
+        if($order){
+          foreach ($product as $key => $value) {
+            $orderproduct=new OrderProduct();
+            $orderproduct->order_id=$order->id;
+            $orderproduct->title=$value["title"];
+            $orderproduct->quantity=$value["quantity"];
+            $orderproduct->price=$value["price"];
+            $orderproduct->save();
+            
+          }
+        }
+        $request->session()->forget('cart_items');
+        $request->session()->forget('ware_house');
+        return redirect()->route('cart');
+        // return view('Userview.cart',compact('product','data','ware'));
+  
+
+     
   }
 
   public function displayallorder(){

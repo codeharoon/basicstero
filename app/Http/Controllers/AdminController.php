@@ -21,12 +21,12 @@ class AdminController extends Controller
        return view('backend.dashboard');
    }
    public function adminLogin(Request $request){
-      return redirect()->route('dashboard');
+    //   return redirect()->route('dashboard');
       $credentials = $request->only('email','password');
 
       if (auth()->attempt($credentials))
       {
-          return redirect()->route('adminDashboard');
+          return redirect()->route('dashboard');
       }else
       {
           return redirect()->back()->with('login-error','Invalid Email or Password! Try Again');
@@ -191,6 +191,7 @@ class AdminController extends Controller
             "aromatization"=>$request->aromatization,
             "description"=>$request->n_description,
             "image"=>$report_image,
+            "quick_code"=>$request->n_code,
         ];
         $product=Product::create($product);
         if($product){

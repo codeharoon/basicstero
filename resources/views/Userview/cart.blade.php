@@ -555,7 +555,9 @@
                         <div class="promocode-status"></div>
                     </div>
                 </form>
-
+                 @php
+                     $price=0;
+                 @endphp
                 <div class="title15">Selected products</div>
                      @foreach ($product as $item)
                      @foreach ($item as $citem)
@@ -568,7 +570,7 @@
                                     <div class="text5 margin5">
                                         <p>{{$citem->Dosage}}</p>
                                         <p>{{$citem->Dosage}}</p>
-                                        <strong>Warehouse 1</strong>
+                                        <strong>Warehouse {{$ware}}</strong>
                                     </div>
                                 </div>
                                 <div class="cart-wrap2">
@@ -583,7 +585,12 @@
                                     </div>
                                     <div class="cart-item2">
                                         <div class="cart-title2">
-                                            <span id="product_price_{{$citem->id}}">$34</span>
+                                              @php
+                                                  $price=$price+($citem->stock[$ware]->price*$data[$citem->id]);
+                                              @endphp
+                                              <span id="product_price_{{$citem->id}}">${{$citem->stock[$ware]->price*$data[$citem->id]}}</span>  
+                                          
+            
                                         </div>
                                     </div>
                                 </div>
@@ -628,7 +635,7 @@
                     </div>
                     <div class="all-sum-item">
                         <div class="cart-title2">
-                            <span id="total_price">$107.60</span>
+                            <span id="total_price">${{$price+43.00}}</span>
                         </div>
                     </div>
                 </div>

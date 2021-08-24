@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class SecureAdmin
 {
     /**
@@ -17,6 +17,13 @@ class SecureAdmin
     public function handle(Request $request, Closure $next,$role)
     {
         // dd($role);
-        return $next($request);
+        
+        if(in_array($role,Auth::user()->role()->pluck('name')->toArray())){
+            return $next($request);
+        }
+        else{
+           return redirect()->route('home');
+        }
+        
     }
 }

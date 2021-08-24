@@ -488,19 +488,22 @@
                             <th>Actions</th>
                             </thead>
                             <tbody>
-                                                                <tr>
-                                    <td width="1"><input class="order_box" type="checkbox" value="E6WBCWAB" name="orders_list[]"></td>
-                                    <td>16.08.2021</td>
-                                    <td>E6WBCWAB</td>
-                                                                                <td>waiting for payment</td>
-                                                                            <td>
-                                        <a style="color:#089dea;" href="https://basicstero.ws/user/orders/E6WBCWAB">Details</a>
-                                        <br>
-                                                                                        <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a>
+                                @foreach ($orders as $item)
+                                    <tr>
+                                        <td width="1"><input class="order_box" type="checkbox" value="E6WBCWAB" name="orders_list[]"></td>
+                                        <td>{{$item->created_at->format('d-m-Y')}}</td>
+                                        <td>{{$item->order_number}}</td>
+                                                                                    <td>{{$item->status}}</td>
+                                                                                <td>
+                                            <a style="color:#089dea;" href="{{route('orderdetail',$item->order_number)}}">Details</a>
                                             <br>
-                                                                                    <a href="javascript:void(0);" onclick="deleteOrder('E6WBCWAB')">Delete</a>
-                                    </td>
-                                </tr>
+                                                    <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a>
+                                                <br>
+                                                    <a href="javascript:void(0);" onclick="deleteOrder('E6WBCWAB')">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                                                
                                                             </tbody>
                         </table>
                         <div style="height:20px;"></div>

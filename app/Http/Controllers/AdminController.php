@@ -193,13 +193,15 @@ class AdminController extends Controller
         ];
         $product=Product::create($product);
         if($product){
+            $i=1;
             foreach ($request->stock as $key => $item) {
                 $stock=new ProductStock();
-                $stock->whouse="w1";
+                $stock->whouse="warehouse{$i}";
                 $stock->product_id=$product->id;
                 $stock->price=$request->price[$key];
                 $stock->stock=$item;
                 $stock->save();
+                $i++;
             }
         }
         // dd($request->all());

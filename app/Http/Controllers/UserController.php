@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Order;
 class UserController extends Controller
 {
    public function login(Request $request){
@@ -82,10 +83,12 @@ class UserController extends Controller
   }
   public function viewcart(Request $request){
     $data=$request->session()->get('cart_items');
-    $product=0;
+    $ware=$request->session()->get('ware_house');
+    $product=[];
     foreach ($data as $key => $value) {
-       $product=Product::where('id','=',$value)->get();  
+       $product[]=Product::where('id','=',$key)->get();  
     }
+   // dd($product);
     return view('Userview.cart',compact('product','data'));
   }
 
@@ -113,7 +116,21 @@ class UserController extends Controller
     return view('Userview.ordercomment');
   }
 
-  public function orderdetail(){
-    return view('UserView.orderdetail');
+  public function displayallorder(){
+    $orders=Order::with('user')->where('user_id','=',Auth::user()->id)->get();
+    return view('Userview.orders',compact('orders'));
+  }
+
+  public function orderdetail($ordernumber){
+    $order=Order::with('user','products')->where('order_number','=',$ordernumber)->where('user_id','=',Auth::user()->id)->first();
+    return view('UserView.orderdetail',compact('order','ordernumber'));
+  }
+
+
+  public function deleteorder($ordernumber){
+    $order=Order::with('user','products')->where('order_number','=',$ordernumber)->where('user_id','=',Auth::user()->id)->first(); 
+    if($order->delete()){
+      return redirect()->route('order');
+    }
   }
 }

@@ -37,7 +37,8 @@ Route::get('/innovations', function () {
 })->name('innovations');
 
 Route::get('/results',[FrontendController::class,'showallreport'])->name('results');
-
+Route::get('/checkcode',[FrontendController::class,'quickcode'])->name('quickcode');
+Route::post('/getcodeproduct',[FrontendController::class,'get_code_project'])->name('getcodeproduct');
 Route::get('/reviews', function () {
     return view('frontend.review');
 })->name('reviews');
@@ -77,7 +78,8 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
     Route::get('/promo', [UserController::class,'get_promo'])->name('promo');
     Route::post('/addpromo', [UserController::class,'promo'])->name('addpromo');
     Route::get('/order_comment', [UserController::class,'ordercomment'])->name('ordercomment');
-    Route::get('/orderdetail', [UserController::class,'orderdetail'])->name('orderdetail');
+    Route::get('/orderdetail/{ordernumber?}', [UserController::class,'orderdetail'])->name('orderdetail');
+    Route::get('/deleteorder/{ordernumber?}', [UserController::class,'deleteorder'])->name('deleteorder');
     
 
     
@@ -85,9 +87,7 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
         return view('Userview.payment');
     })->name('payment');
     
-    Route::get('/order', function () {
-        return view('Userview.orders');
-    })->name('order');
+    Route::get('/order', [UserController::class,'displayallorder'])->name('order');
     
     Route::get('/referals', function () {
         return view('Userview.referals');

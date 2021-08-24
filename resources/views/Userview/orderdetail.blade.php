@@ -478,7 +478,7 @@
 
 @section('content')
 <div class="box1 border1">
-    <div class="title6">Order #E6WBCWAB</div>
+    <div class="title6">Order #{{$ordernumber}}</div>
     
 </div>
 
@@ -537,7 +537,7 @@
                                                                                                         </div>
                             <div class="pay-warning">
                                                                         <p>Wallet address:</p>
-                                    <p style="font-size:15px;">1FJGCkaYkhg9GfMRYVe7ZqGHG9TWNvmz2N</p>
+                                    <p style="font-size:15px;">{{$order->walletaddress}}</p>
                                     <div class="blue-block">
                                         <p>AFTER PAYMENT IS DONE, PLEASE SUBMIT
                                             <a href="/user/transfer">PAYMENT</a> INFO ABOUT YOUR TRANSFER TO PAYMENT SECTION IN THE UPPER MENU.
@@ -554,14 +554,12 @@
                         <div class="delivery-part">
                             <span class="header">Address (<a href="/user/edit_order_address/E6WBCWAB">edit</a>)</span>
                             <p class="content">
-                                Haroon iqbal<br>
-                                str. Lahore, pakistan<br>
-                                                                    Lahore, 30936<br>
-                                punjab, 
-                                Italy
+                                {{$order->user->full_name}}<br>
+                                {{$order->user->addressline1}}<br>
+                                {{$order->user->addressline2}}
 
                                 <br>
-                                harooniqbal585@gmail.com
+                                {{$order->user->email}}
                                 <br>
                                                                 </p>
                         </div>
@@ -577,7 +575,7 @@
                             <span class="header">Comment (<a onclick="$('p.comment_content').toggle();$('form.comment_edit').toggle();"
                                                              href="javascript:void(0);">edit</a>)</span>
                             <p class="content comment_content">
-                                None
+                                {{$order->comment}}
                             </p>
                             <form style="display:none;" class="comment_edit" action="https://basicstero.ws/user/edit_comment/E6WBCWAB" method="POST">
                                 <textarea name="comment" style="width:100%;padding:10px;margin-top:10px;
@@ -603,66 +601,73 @@
                         <th>Price</th>
                         </thead>
                         <tbody>
-                                                        <tr class="odd">
-                                <td class="w400" style="text-transform:uppercase;">PHARMATEST C 250</td>
-                                <td class="w80">5 pcs.</td>
-                                <td class="w150">$225</td>
-                            </tr>
+                            @foreach ($order->products as $orderp)
+                                <tr class="odd">
+                                    <td class="w400" style="text-transform:uppercase;">{{$orderp->title}}</td>
+                                    <td class="w80">{{$orderp->quantity}}</td>
+                                    <td class="w150">${{$orderp->price}}</td>
+                                </tr>
+                            @endforeach
+                         
                                                                                 </tbody>
                     </table>
 
+                    @foreach ($order->products as $orderp)
                     <div class="transfer_data_mobile mobile_only">
-                                                        <div class="linewrap">
-                                <div class="transfer_label">Title</div>
-                                <div class="transfer_value" style="text-transform:uppercase;">PHARMATEST C 250</div>
-                                <div class="clear"></div>
+                        <div class="linewrap">
+                            <div class="transfer_label">Title</div>
+                            <div class="transfer_value" style="text-transform:uppercase;">{{$orderp->title}}</div>
+                            <div class="clear"></div>
                             </div>
                             <div class="linewrap">
-                                <div class="transfer_label">Quantity</div>
-                                <div class="transfer_value">5 pcs.</div>
-                                <div class="clear"></div>
+                            <div class="transfer_label">Quantity</div>
+                            <div class="transfer_value">{{$orderp->quantity}}</div>
+                            <div class="clear"></div>
                             </div>
                             <div class="linewrap">
-                                <div class="transfer_label">Price</div>
-                                <div class="transfer_value">$225</div>
-                                <div class="clear"></div>
+                            <div class="transfer_label">Price</div>
+                            <div class="transfer_value">${{$orderp->price}}</div>
+                            <div class="clear"></div>
                             </div>
 
                             <div style="height:15px;"></div>
-                                                                            </div>
+                                            </div>
+                    @endforeach
+
+                  
 
                     <div class="outer_right">
 
                         <div class="order-total-delivery weighted">
                             Products total:
-                            <span class=" w150">$213.75</span>
+                            <span class=" w150">${{$order->producttotal}}</span>
                         </div>
 
                                                                                                                                     <div class="order-total-delivery weighted">
                                         Bitcoin discount:
-                                        <span class="w150">5%</span>
+                                        <span class="w150">{{$order->discount}}%</span>
                                     </div>
                                                                                             
                         <div class="order-total-delivery weighted">
                             Delivery:
-                            <span class="w150">$43</span>
+                            <span class="w150">${{$order->delivery}}</span>
                         </div>
                         <div class="order-total-price weighted">
                             Your current balance:
-                            <span class="w150">$0</span>
+                            <span class="w150">${{$order->currentbalance}}</span>
                         </div>
                         <div class="order-total-price weighted">
                             Your order total:
-                            <span class="w150">$256.75</span>
+                            <span class="w150">${{$order->ordertotal}}</span>
                         </div>
                                                         <div class="order-total-price weighted">
                                 Bitcoin total:
-                                <span class="w150">0.00510383 coins</span>
+                                <span class="w150">{{$order->bitcoin}} coins</span>
                             </div>
                                                     <div class="order-total-price weighted">
                                                                 Amount left to pay:
                                 <span class="w150">$
-                                    256.75
+                                    {{$order->amountleft}}
                             </span>
                                                         </div>
                                                         <div>

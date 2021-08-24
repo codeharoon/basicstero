@@ -95,7 +95,7 @@
                     </span>
                                     <span>
                         <a class=""
-                                                      href="{{route('reviews')}}"
+                                                      href="{{route('quickcode')}}"
                                                    >Check code</a>
                     </span>
                                     <span>
@@ -149,13 +149,13 @@
 
     <div class="header-in-item2">
 
-                    <a href="#">
+                    {{-- <a href="#">
                 <select class="my_select_form currency_select">
                     <option  selected  value="1">USD</option>
                     <option  value="2">EUR</option>
                     <option  value="3">GBP</option>
                 </select>
-            </a>
+            </a> --}}
             <div class="icon-in auth_a">
                 <div class="icon-in-item"></div>
                 <a class="" href="{{route('login')}}">Login</a>
@@ -368,6 +368,22 @@ $(document).ready(function () {
     //     window.location = '/set_currency/' + val;
     // })
 });
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('.cart .plus').click(function () {
+            obj = $('.sum input', $(this).parent());
+            val = parseInt(obj.val()) + 1;
+            obj.val(val);
+        });
+        $('.cart .minus').click(function () {
+            obj = $('.sum input', $(this).parent());
+            val = parseInt(obj.val()) - 1;
+            if (val < 1) val = 1;
+            obj.val(val);
+        });
+    });
 </script>
 <div id="overlay"></div>
 

@@ -65,6 +65,10 @@ class FrontendController extends Controller
         return view('frontend.purchase',compact('products','warehouse'));
     }
 
+    public function quickcode(){
+        return view('frontend.quickcode');
+    }
+
     public function addtocart(Request $request){
         // $request->session()->forget('cart_items');
         if ($request->session()->has('cart_items')) {
@@ -104,6 +108,15 @@ class FrontendController extends Controller
         return response()->json(['success'=>'Ajax request submitted successfully','quantity'=>$quantity]); 
     }
  
+    public function get_code_project(Request $request){
+        // dd($request->all());
+        $product=Product::with('stock','classification')
+                          ->where('quick_code','=',$request->Product_code)->first();
+        $recommended_product=Product::with('stock','classification')
+                        ->where('classification_id','=',$product->classification_id)
+                        ->limit(7)->get();
+        return view('frontend.singleproduct',compact('product','recommended_product'));
+    }
    
 }
 

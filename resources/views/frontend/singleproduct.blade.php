@@ -77,7 +77,7 @@
     }
 
     .icon-in-item.user {
-        background: url(/static/img/profile.png) no-repeat top center;
+        background: url({{asset('img/profile.png')}}) no-repeat top center;
         height: 15px;
         margin-left: 7px;
     }
@@ -92,11 +92,11 @@
     }
 
     .icon-in-item.chat {
-        background: url(/static/img/bubbles.png) no-repeat center center;
+        background: url({{asset('img/bubbles.png')}}) no-repeat center center;
     }
 
     .icon-in-item.top_cart {
-        background: url(/static/img/cart.png) no-repeat center center;
+        background: url({{asset('img/cart.png')}}) no-repeat center center;
     }
 
     .quantity-external {
@@ -321,7 +321,7 @@
     .cart-button.refactor {
         width: 37px;
         height: 30px;
-        background: url('/static/img/cart.png') no-repeat 98% center !important;
+        background: url('{{asset('img/cart.png')}}') no-repeat 98% center !important;
         cursor: pointer;
         position: absolute;
         top: 0;
@@ -329,24 +329,24 @@
     }
 
     .title8 {
-        background: url('/static/img/title7.png') no-repeat 5px center;
+        background: url('{{asset('img/title7.png')}}') no-repeat 5px center;
         font-family: sans-serif !important;
     }
 
     .box7-in-item:nth-child(7) {
-        background: url('/static/img/acne.png') no-repeat left 8px;
+        background: url('{{asset('img/acne.png')}}') no-repeat left 8px;
     }
 
     .box7-in-item.water_base {
-        background: url('/static/img/oil.png') no-repeat 5px 3px;
+        background: url('{{asset('img/oil.png')}}') no-repeat 5px 3px;
     }
 
     .box7-in-item.tablets {
-        background: url('/static/img/tablet.png') no-repeat 5px 3px;
+        background: url('{{asset('img/tablet.png')}}') no-repeat 5px 3px;
     }
 
     .box7-in-item.ampoules {
-        background: url('/static/img/ampoule.png') no-repeat 5px 3px;
+        background: url('{{asset('img/ampoule.png')}}') no-repeat 5px 3px;
     }
 
     .cart-item0 {
@@ -367,7 +367,7 @@
             <div class="box5 border1">
         <div class="box5-item1">
             <div class="breads-in">
-                                    <a href="https://basicstero.ws/injectableline" class="breads-in-item1">Injectable Line</a>
+                                    <a href="{{asset('injectableline')}}" class="breads-in-item1">Injectable Line</a>
                                 <span class="breads-in-item2">/</span>
                 <a href="/injection-line/trenbolone"
                    class="breads-in-item1">{{$product->type}}</a>
@@ -386,14 +386,14 @@
                 <div class="cart-item1">
                     <div class="cart">
                         <div class="minus"></div>
-                        <div class="sum"><input type="text" value="1"></div>
+                        <div class="sum"><input type="text" value="2"></div>
                         <div class="plus"></div>
                     </div>
                 </div>
                 <div class="cart-item2">
                     <div class="cart-title">
                         ${{$item->price}}
-                        <div class="cart-button refactor" data-product_id="114" data-warehouse="3"></div>
+                        <div class="cart-button refactor" data-product_id="{{$item->id}}" data-warehouse="{{$loop->iteration}}"></div>
                     </div>
                 </div>
             </div>
@@ -447,7 +447,7 @@
                 <div class="title8">
 
                     
-                    <br>100 mg/ml
+                    <br>{{$product->weight}}
 
                 </div>
                                     <div style="padding:10px 20px;background:#efefef;border-radius:5px;margin-top:10px;width:calc(100% - 60px)">

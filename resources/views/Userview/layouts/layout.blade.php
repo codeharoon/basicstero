@@ -151,13 +151,13 @@
     <div class="header-in-item2">
 
                     <div class="icon-in user-dashboard-menu">
-                <a href="#">
+                {{-- <a href="#">
                     <select class="my_select_form currency_select">
                         <option  value="1">USD</option>
                         <option  value="2">EUR</option>
                         <option  value="3">GBP</option>
                     </select>
-                </a>
+                </a> --}}
 
                 <a href="{{route('profile')}}">
                     <div class="icon-in-item user"></div> {{Auth::user()->username}}

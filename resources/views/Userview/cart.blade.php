@@ -444,49 +444,49 @@
 
                 <form class="form-delivery" action="/set_payment_method" method="POST">
                     <input type="hidden" name="_token" value="WtIS4OT6NcJ2xcdV0FL3i56M2c3xvGRs5lOWSfzc">                        <p class="pay_method_button active_payment ">
-                        <label for="p-bitcoin"><img src="/static/imgold/bitcoin_logo.png" width="50"></label>
+                        <label for="p-bitcoin"><img src="{{asset('payments/bitcoin_logo.png')}}" width="50"></label>
                         <input type="radio" id="p-bitcoin" name="payment_method"
                                value="Bitcoin">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-BitcoinCash"><img src="/static/imgold/BitcoinCash.png"></label>
+                        <label for="p-BitcoinCash"><img src="{{asset('payments/BitcoinCash.png')}}"></label>
                         <input type="radio" id="p-BitcoinCash" name="payment_method"
                                value="BitcoinCash">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Litecoin"><img src="/static/imgold/Litecoin.png"></label>
+                        <label for="p-Litecoin"><img src="{{asset('payments/Litecoin.png')}}"></label>
                         <input type="radio" id="p-Litecoin" name="payment_method"
                                value="Litecoin">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Ethereum"><img src="/static/imgold/Ethereum.png"></label>
+                        <label for="p-Ethereum"><img src="{{asset('payments/Ethereum.png')}}"></label>
                         <input type="radio" id="p-Ethereum" name="payment_method"
                                value="Ethereum">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Tether"><img src="/static/imgold/tether.png"></label>
+                        <label for="p-Tether"><img src="{{asset('payments/tether.png')}}"></label>
                         <input type="radio" id="p-Tether" name="payment_method"
                                value="Tether">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-Dash"><img src="/static/imgold/Dash.png"></label>
+                        <label for="p-Dash"><img src="{{asset('payments/Dash.png')}}"></label>
                         <input type="radio" id="p-Dash" name="payment_method"
                                value="Dash">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-western"><img src="/static/imgold/pay-western.png" width="50"></label>
+                        <label for="p-western"><img src="{{asset('payments/pay-western.png')}}" width="50"></label>
                         <input type="radio" id="p-western" name="payment_method"
                                value="Western Union">
                     </p>
 
                     <p class="pay_method_button ">
-                        <label for="p-moneygram"><img src="/static/imgold/moneygram.png" width="50"></label>
+                        <label for="p-moneygram"><img src="{{asset('payments/moneygram.png')}}" width="50"></label>
                         <input type="radio" id="p-moneygram" name="payment_method"
                                value="MoneyGram">
                     </p>
@@ -557,41 +557,45 @@
                 </form>
 
                 <div class="title15">Selected products</div>
-
-                    <div class="box17-in-item" id="product_114">
-                        <div class="box17-img">
-                            <a href=""><img src="/uploads/products/img_product_114_150_0_0.jpeg" alt=""></a>
-                        </div>
-                        <div class="box17-info">
-                            <div class="title16">PHARMATREN H 100</div>
-                            <div class="text5 margin5">
-                                <p>Trenbolone hexahydrobenzylcarbonate</p>
-                                <p>100 mg/ml</p>
-                                <strong>Warehouse 1</strong>
-                            </div>
-                        </div>
-                        <div class="cart-wrap2">
-                            <div class="cart-item1">
-                                <div class="cart">
-                                    <div class="minus2"></div>
-                                    <div class="sum2">
-                                        <input type="text" data-product_id="114" disabled value="1">
+                     @foreach ($product as $item)
+                     @foreach ($item as $citem)
+                            <div class="box17-in-item" id="product_114">
+                                <div class="box17-img">
+                                    <a href=""><img src="{{asset('/assets/backend/product/image/'.$citem->image)}}" alt=""></a>
+                                </div>
+                                <div class="box17-info">
+                                    <div class="title16">{{$citem->title}}</div>
+                                    <div class="text5 margin5">
+                                        <p>{{$citem->Dosage}}</p>
+                                        <p>{{$citem->Dosage}}</p>
+                                        <strong>Warehouse 1</strong>
                                     </div>
-                                    <div class="plus2"></div>
                                 </div>
-                            </div>
-                            <div class="cart-item2">
-                                <div class="cart-title2">
-                                    <span id="product_price_114">$68.00</span>
+                                <div class="cart-wrap2">
+                                    <div class="cart-item1">
+                                        <div class="cart">
+                                            <div class="minus2"></div>
+                                            <div class="sum2">
+                                                <input type="text" data-product_id="{{$citem->id}}" disabled value="{{$data[$citem->id]}}">
+                                            </div>
+                                            <div class="plus2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-item2">
+                                        <div class="cart-title2">
+                                            <span id="product_price_{{$citem->id}}">$34</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="box17-close">
-                            <a href="https://basicstero.ws/del_from_cart/114">
-                                <img src="/static/img/cross.png" alt="">
-                            </a>
-                        </div>
-                    </div>
+                                <div class="box17-close">
+                                    <a href="https://basicstero.ws/del_from_cart/114">
+                                        <img src="{{asset('img/cross.png')}}" alt="">
+                                    </a>
+                                </div>
+                            </div>  
+                     @endforeach
+                     @endforeach
+                
                                             </div>
                         <div class="wrap8">
                 <div class="delivery">

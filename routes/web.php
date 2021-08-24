@@ -82,7 +82,8 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
     Route::get('/deleteorder/{ordernumber?}', [UserController::class,'deleteorder'])->name('deleteorder');
     
 
-    
+
+
     Route::get('/payment', function () {
         return view('Userview.payment');
     })->name('payment');
@@ -92,11 +93,11 @@ Route::group(['prefix' => 'user','middleware' => ['auth']],function (){
     Route::get('/referals', function () {
         return view('Userview.referals');
     })->name('referals');
-    
+
     Route::get('/changepassword', function () {
         return view('Userview.changepassword');
     })->name('changepassword');
-    
+
 });
 
 
@@ -164,5 +165,17 @@ Route::group(['prefix' => 'admin','middleware' => ['secureadmin:admin:user']],fu
     Route::get('edit-classification/{id?}', [AdminController::class,'editclassification'])->name('editclassification');
     Route::post('update-classification/{id?}', [AdminController::class,'updateclassification'])->name('updateclassification');
     Route::get('delete-classification/{id?}', [AdminController::class,'deleteclassification'])->name('deleteclassification');
+
+    //role url
+
+    Route::get('role',[AdminController::class,'viewRole'])->name('role');
+    Route::get('add-role',[AdminController::class,'addRole'])->name('addRole');
+    Route::get('edit-role/{id?}', [AdminController::class,'editRole'])->name('editRole');
+    Route::post('update-role/{id?}', [AdminController::class,'updateRole'])->name('updateRole');
+    Route::get('delete-role/{id?}', [AdminController::class,'deleteRole'])->name('deleteRole');
+    Route::post('save-role',[AdminController::class,'saveRole'])->name('saveRole');
 });
+
+
+
 

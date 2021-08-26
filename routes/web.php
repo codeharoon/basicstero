@@ -28,7 +28,7 @@ Route::get('/purchase', [FrontendController::class,'purchase'])->name('purchase'
 Route::get('/discount',[FrontendController::class,'showalldiscount'] )->name('discount');
 
 Route::get('/faq', [FrontendController::class,'showallfaq'])->name('faq');
-
+Route::post('/submitcontact',[FrontendController::class,'addcontact'])->name('submitcontact');
 Route::get('/terms', function () {
     return view('frontend.ourterms');
 })->name('terms');

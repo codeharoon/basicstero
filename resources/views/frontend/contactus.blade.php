@@ -347,8 +347,8 @@
                         Please fill the form below and we will reply you within 24 hours.
                     </div>
 
-                    <form method="POST" class="contacts-form" action="/contact">
-                        <input type="hidden" name="_token" value="2TzQgAdUTAnSPKK1fd5rT9oBHhhLh4InMoukKhN3">                            <div class="form-wrap">
+                    <form method="POST" class="contacts-form" action="{{route('submitcontact')}}">
+                        @csrf                          <div class="form-wrap">
                             <div class="box12-item4">
                                 <input type="text" class="form-input-line2" placeholder="Your name *" value="" name="name">
                             </div>

@@ -50,7 +50,7 @@ class FrontendController extends Controller
          
     }
     public function addcontact(Request $request){
-            
+            return redirect()->route('contact');
     }
 
     public function Oralline(){

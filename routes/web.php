@@ -17,6 +17,7 @@ use App\Http\Controllers\FrontendController;
 */
 
 Route::get('/',[FrontendController::class,'index'])->name('home');
+// Route::get('/sendmail',[FrontendController::class,'sendmail'])->name('sendmail');
 Route::get('/singleproduct/{id?}',[FrontendController::class,'singleproduct'])->name('singleproduct');
 
 
@@ -54,6 +55,9 @@ Route::get('/oralsteroids', [FrontendController::class,'Oralline'])->name('orals
 Route::get('/injectableline', [FrontendController::class,'injectableline'])->name('injectableline');
 
 Route::get('/hgh', [FrontendController::class,'hgh'])->name('hgh');
+Route::get('/hgh/{categoryname?}', [FrontendController::class,'hghSearch'])->name('hghsearch');
+Route::get('/oralsteroids/{categoryname?}', [FrontendController::class,'oralsteroidsSearch'])->name('oralsteroidsSearch');
+Route::get('/injectableline/{categoryname?}', [FrontendController::class,'injectablelineSearch'])->name('injectablelineSearch');
 
 Route::get('/login', function () {
     return view('Userview.login');
@@ -167,7 +171,15 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','secureadmin:admin']],
     Route::post('update-classification/{id?}', [AdminController::class,'updateclassification'])->name('updateclassification');
     Route::get('delete-classification/{id?}', [AdminController::class,'deleteclassification'])->name('deleteclassification');
 
-    //role url
+// category url
+    Route::get('all-category', [AdminController::class,'allCategory'])->name('allcategory');
+    Route::get('add-category', [AdminController::class,'createCategory'])->name('createcategory');
+    Route::post('save-category', [AdminController::class,'storeCategory'])->name('storecategory');
+    Route::get('edit-category/{id?}', [AdminController::class,'editCategory'])->name('editcategory');
+    Route::post('update-category/{id?}', [AdminController::class,'updateCategory'])->name('updatecategory');
+    Route::get('delete-category/{id?}', [AdminController::class,'deleteCategory'])->name('deletecategory');
+
+//role url
 
     Route::get('role',[AdminController::class,'viewRole'])->name('role');
     Route::get('add-role',[AdminController::class,'addRole'])->name('addRole');

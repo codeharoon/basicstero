@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\ProductStock;
 use App\Models\WareHouse;
 use App\Models\Classification;
+use App\Models\Category;
 use App\Models\Role;
 class AdminController extends Controller
 {
@@ -165,8 +166,9 @@ class AdminController extends Controller
     }
     public function createproduct(){
         $warehouses=WareHouse::all();
+        $category=Category::all();
         $classification=Classification::all();
-        return view('backend.products.add-view',compact('warehouses','classification'));
+        return view('backend.products.add-view',compact('warehouses','classification','category'));
     }
 
     public function storeproduct(Request $request){
@@ -305,6 +307,46 @@ class AdminController extends Controller
             return redirect()->route('allclassification');
         }
     }
+
+    
+    public function allCategory(){
+        $category=Category::all();
+        return view('backend.category.list-view',compact('category'));
+    }
+    public function createCategory(){
+
+        return view('backend.category.add-view');
+    }
+
+    public function storeCategory(Request $request){
+      $category=new Category();
+      $category->name=$request->c_title;
+      $category->type=$request->type;
+      if($category->save()){
+          return redirect()->route('allcategory');
+      }
+    }
+    public function editCategory(Request $request,$id){
+        $category=Category::find($id);
+        return view('backend.category.edit-view',compact('category'));
+    }
+    public function updateCategory(Request $request,$id){
+        // dd($id);
+        $category=Category::find($id);
+        $category->name=$request->c_title;
+        $category->type=$request->type;
+        if($category->save()){
+            return redirect()->route('allcategory');
+        }
+    }
+    public function deleteCategory(Request $request,$id){
+        if(Category::find($id)->delete()){
+            return redirect()->route('allcategory');
+        }
+    }
+
+
+    // role
     public function viewRole(){
        $role =  Role::all();
         return view('backend.Role.view-role',compact('role'));
@@ -343,5 +385,5 @@ class AdminController extends Controller
         }
     }
 
-
+   
 }

@@ -87,11 +87,11 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Type Category</label>
+                                <label>Category</label>
                                 <select name="type_category" id="" class="form-control">
-                                    <option value="1">Category 1</option>
-                                    <option value="2">Category 2</option>
-                                    <option value="3">Category 3</option>
+                                    @foreach ($category as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>   
+                                    @endforeach
                                 </select>
                                 @if($errors->has('n_tcategory'))
                                     <span class="text-danger" style="font-size: 12px;">{{ $errors->first('n_title') }}</span>
@@ -204,8 +204,8 @@
 
 
                         <div class="row d-flex justify-content-around">
-                            <div class="col-md-5">
-                                <button type="submit" class="btn btn-primary btn-sm btn-block">Submit</button>
+                            <div class="col-md-12 col-lg-12">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block float-right">Submit</button>
                             </div>
                         </div>
                     </form>

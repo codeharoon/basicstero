@@ -586,9 +586,9 @@
                                     <div class="cart-item2">
                                         <div class="cart-title2">
                                               @php
-                                                  $price=$price+($citem->stock[$ware]->price*$data[$citem->id]);
+                                                  $price=$price+($citem->stock[$ware-1]->price*$data[$citem->id]);
                                               @endphp
-                                              <span id="product_price_{{$citem->id}}">${{$citem->stock[$ware]->price*$data[$citem->id]}}</span>  
+                                              <span id="product_price_{{$citem->id}}">${{$citem->stock[$ware-1]->price*$data[$citem->id]}}</span>  
                                           
             
                                         </div>

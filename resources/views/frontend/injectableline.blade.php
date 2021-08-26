@@ -394,50 +394,13 @@
 <div class="box1 border1">
     <div class="title6">INJECTABLE LINE</div>
     <div class="wrap2">
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="1" data-url="testosterones">Testosterones</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="3" data-url="nandrolones">Nandrolones</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="4" data-url="boldenones">Boldenones</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="5" data-url="trenbolone">Trenbolones</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="6" data-url="stanozolol">Stanozolol</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="7" data-url="primobolan">Primobolanes</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="8" data-url="masteron">Masterones</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="9" data-url="pharma-mix">Mixes Special Line</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="10" data-url="methandienone">Methandienone inj.</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="24" data-url="oxymetholone">Oxymetholone</div>
-            </a>
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="26" data-url="gw1516">GW1516</div>
-            </a>
+                 @foreach ($category as $item)
+                    <a href="{{route('injectablelineSearch',$item->name)}}">
+                        <div class="box-item4 @if ($item->id==$id) {{"box-item4-active"}} @endif"
+                            data-id="{{$item->id}}" data-url="testosterones">{{$item->name}}</div>
+                    </a>
+                 @endforeach
+        
                             </div>
 </div>
 
@@ -470,7 +433,7 @@
                     <div class="cart">
                         <div class="minus2"></div>
                         <div class="sum2">
-                            <input type="text" data-product_id="191" class="product_quantity" disabled="" value="1">
+                            <input type="text" data-product_id="{{$item->id}}" class="product_quantity" disabled="" value="1">
                         </div>
                         <div class="plus2"></div>
                     </div>
@@ -483,7 +446,7 @@
                       {{"quantity_avg"}}
                 @else
                       {{"quantity_max"}}
-                @endif" data-product_id="191" data-warehouse="1">
+                @endif" data-product_id="{{$item->id}}" data-warehouse="{{$loop->iteration}}">
                     <span class="wh_label">W1 - @if( $whouse->stock == 0 )
                         {{"OUT OF STOCK"}}
                   @elseif( $whouse->stock > 0 and $whouse->stock < 20 )

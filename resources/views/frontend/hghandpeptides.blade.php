@@ -395,10 +395,13 @@
 <div class="box1 border1">
     <div class="title6">HGH AND PEPTIDES</div>
     <div class="wrap2">
-                        <a href="#">
-                <div class="box-item4"
-                     data-id="25" data-url="hgh">HGH</div>
+        @foreach ($category as $item)
+            <a href="{{route('hghsearch',$item->name)}}">
+                <div class="box-item4 @if ($item->id==$id) {{"box-item4-active"}} @endif"
+                    data-id="{{$item->id}}" data-url="hgh">HGH</div>
             </a>
+        @endforeach
+                
                             </div>
 </div>
 
@@ -431,7 +434,7 @@
                     <div class="cart">
                         <div class="minus2"></div>
                         <div class="sum2">
-                            <input type="text" data-product_id="191" class="product_quantity" disabled="" value="1">
+                            <input type="text" data-product_id="{{$item->id}}" class="product_quantity" disabled="" value="1">
                         </div>
                         <div class="plus2"></div>
                     </div>
@@ -444,7 +447,7 @@
                       {{"quantity_avg"}}
                 @else
                       {{"quantity_max"}}
-                @endif" data-product_id="191" data-warehouse="1">
+                @endif" data-product_id="{{$item->id}}" data-warehouse="{{$loop->iteration}}">
                     <span class="wh_label">W1 - @if( $whouse->stock == 0 )
                         {{"OUT OF STOCK"}}
                   @elseif( $whouse->stock > 0 and $whouse->stock < 20 )

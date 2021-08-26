@@ -8,8 +8,19 @@ use App\Models\Faq;
 use App\Models\LabReport;
 use App\Models\Product;
 use App\Models\WareHouse;
+use App\Models\Category;
+use Mail;
 class FrontendController extends Controller
 {
+    public function sendmail(){
+       $data=["name"=>"vishal","data"=>"This is data"];
+       $user["to"]="harooniqbal585@gmail.com";
+       Mail::send('mail',$data,function($message) use ($user){
+           $message->to($user["to"]);
+           $message->subject("Hello dev");
+
+       });
+    }  
     public function index(){
         $products=Product::with('stock','classification')->offset(0)->limit(3)->get();
         return view('welcome',compact('products'));
@@ -43,26 +54,33 @@ class FrontendController extends Controller
     }
 
     public function Oralline(){
+        $category=Category::where("type",'like',"%oralsteroids%")->get();
         $products=Product::with('stock','classification')->where("type","=","oralsteroids")->get();
         $warehouse=WareHouse::all();
-        return view('frontend.oralline',compact('products','warehouse'));
+        $id=0;
+        return view('frontend.oralline',compact('products','warehouse','category','id'));
     }
 
     public function injectableline(){
+        $category=Category::where("type",'like',"%injectableline%")->get();
         $products=Product::with('stock','classification')->where("type","=","injectableline")->get();
         $warehouse=WareHouse::all();
-        return view('frontend.injectableline',compact('products','warehouse'));
+        $id=0;
+        return view('frontend.injectableline',compact('products','warehouse','category','id'));
     }
 
     public function hgh(){
+        $category=Category::where("type",'like',"%hgh%")->get();
         $products=Product::with('stock','classification')->where("type","=","hgh")->get();
         $warehouse=WareHouse::all();
-        return view('frontend.hghandpeptides',compact('products','warehouse'));
+        $id=0;
+        return view('frontend.hghandpeptides',compact('products','warehouse','category','id'));
     }
     public function purchase(){
+        $category=Category::all();
         $products=Product::with('stock','classification')->get();
         $warehouse=WareHouse::all();
-        return view('frontend.purchase',compact('products','warehouse'));
+        return view('frontend.purchase',compact('products','warehouse','category'));
     }
 
     public function quickcode(){
@@ -117,6 +135,42 @@ class FrontendController extends Controller
                         ->limit(7)->get();
         return view('frontend.singleproduct',compact('product','recommended_product'));
     }
-   
+
+   public function hghSearch($categoryname){
+    $search_category=Category::where("name",'like','%'.$categoryname."%")->first();
+    $id=$search_category->id;
+    $products=Product::where('type_classfication_id','=',$search_category->id)->get();
+    $category=Category::where("type",'like',"%hgh%")->get();
+    $warehouse=WareHouse::all();
+    return view('frontend.hghandpeptides',compact('products','warehouse','category','id'));
+   }
+
+   public function oralsteroidsSearch($categoryname){
+    $search_category=Category::where("name",'like','%'.$categoryname."%")->first();
+    $id=$search_category->id;
+    $products=Product::where('type_classfication_id','=',$search_category->id)->get();
+    $category=Category::where("type",'like',"%oralsteroids%")->get();
+    $warehouse=WareHouse::all();
+    return view('frontend.oralline',compact('products','warehouse','category','id'));
+   }
+
+   public function injectablelineSearch($categoryname){
+    $search_category=Category::where("name",'like','%'.$categoryname."%")->first();
+    $id=$search_category->id;
+    $products=Product::where('type_classfication_id','=',$search_category->id)->get();
+    $category=Category::where("type",'like',"%injectableline%")->get();
+    $warehouse=WareHouse::all();
+    return view('frontend.injectableline',compact('products','warehouse','category','id'));
+   }
+
+   public function purchaseSearch($categoryname){
+    $search_category=Category::where("name",'like','%'.$categoryname."%")->first();
+    $id=$search_category->id;
+    $products=Product::where('type_classfication_id','=',$search_category->id)->get();
+    $category=Category::where("type",'like',"%hgh%")->get();
+    $warehouse=WareHouse::all();
+    return view('frontend.hghandpeptides',compact('products','warehouse','category','id'));
+   }
+
 }
 

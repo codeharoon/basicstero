@@ -57,52 +57,52 @@
             <div class="nav">
                                     <span>
                         <a class=""
-                                                      href="/news"
+                                                      href="{{route('news')}}"
                                                    >News</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/price"
+                                                      href="{{route('purchase')}}"
                                                    >Purchase</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/discounts"
+                                                      href="{{route('discount')}}"
                                                    >Discounts</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/faq"
+                                                      href="{{route('faq')}}"
                                                    >FAQ</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/terms"
+                                                      href="{{route("terms")}}"
                                                    >Our terms</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/innovations"
+                                                      href="{{route('innovations')}}"
                                                    >Innovations</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/results"
+                                                      href="{{route('results')}}"
                                                    >Lab reports</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/reviews"
+                                                      href="{{route('reviews')}}"
                                                    >Reviews</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="http://pharmacomlabs.com/code"
+                                                      href="{{route('quickcode')}}"
                                                    >Check code</a>
                     </span>
                                     <span>
                         <a class=""
-                                                      href="/contact"
+                                                      href="{{route('contact')}}"
                                                    >Contact us</a>
                                             @auth
                                                 </span>                                                                                 <span>

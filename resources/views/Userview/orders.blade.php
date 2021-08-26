@@ -497,8 +497,8 @@
                                                                                 <td>
                                             <a style="color:#089dea;" href="{{route('orderdetail',$item->order_number)}}">Details</a>
                                             <br>
-                                                    <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a>
-                                                <br>
+                                                    {{-- <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a> --}}
+                                                {{-- <br> --}}
                                                     <a href="{{route('deleteorder',$item->order_number)}}">Delete</a>
                                         </td>
                                     </tr>
@@ -514,7 +514,42 @@
         </div>
 
         <div class="wrap11 mobile_only">
-            <div class="box18-in">
+            @foreach ($orders as $item)
+                <div class="box18-in">
+                    <div class="box18-in-item">
+                        <div class="transfer_data_mobile">
+                                                            <div class="linewrap">
+                                    <div class="transfer_label">Created</div>
+                                    <div class="transfer_value">{{$item->created_at->format('d-m-Y')}}</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="linewrap">
+                                    <div class="transfer_label">Order #</div>
+                                    <div class="transfer_value">{{$item->order_number}}</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="linewrap">
+                                    <div class="transfer_label">Status</div>
+                                                                            <div class="transfer_value">{{$item->status}}</div>
+                                                                        <div class="clear"></div>
+                                </div>
+                                <div class="linewrap">
+                                    <div class="transfer_label">Actions</div>
+                                    <div class="transfer_value">
+                                        <a style="color:#089dea;" href="{{route('orderdetail',$item->order_number)}}">Details</a>
+                                        <br>
+                                                                                    {{-- <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a> --}}
+                                            <br>
+                                                                                <a href="{{route('deleteorder',$item->order_number)}}">Delete</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div style="height:15px;"></div>
+                                                    </div>
+                    </div>
+                </div>   
+            @endforeach
+            {{-- <div class="box18-in">
                 <div class="box18-in-item">
                     <div class="transfer_data_mobile">
                                                         <div class="linewrap">
@@ -546,7 +581,10 @@
                             <div style="height:15px;"></div>
                                                 </div>
                 </div>
-            </div>
+            </div> --}}
+
+
+
         </div>
 
         <div class="spacer"></div>

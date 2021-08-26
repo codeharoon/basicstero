@@ -500,8 +500,11 @@
         <div class="title6">FULL PRODUCT RANGE</div>
         <div class="wrap2">
             <!--box-item3-active-->
-                            <div class="box-item3" data-id="4">Boldenones</div>
-                            <div class="box-item3" data-id="23">Fat Loss</div>
+                            @foreach ($category as $item)
+                                <div class="box-item3" data-id="{{$item->id}}">{{$item->name}}</div> 
+                            @endforeach
+                            
+                            {{-- <div class="box-item3" data-id="23">Fat Loss</div>
                             <div class="box-item3" data-id="26">GW1516</div>
                             <div class="box-item3" data-id="25">HGH</div>
                             <div class="box-item3" data-id="8">Masterones</div>
@@ -514,7 +517,7 @@
                             <div class="box-item3" data-id="7">Primobolanes</div>
                             <div class="box-item3" data-id="6">Stanozolol</div>
                             <div class="box-item3" data-id="1">Testosterones</div>
-                            <div class="box-item3" data-id="5">Trenbolones</div>
+                            <div class="box-item3" data-id="5">Trenbolones</div> --}}
                     </div>
     </div>
 

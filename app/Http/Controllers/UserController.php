@@ -9,8 +9,19 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use Mail;
 class UserController extends Controller
 {
+  private function RandomString()
+    {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randstring = [];
+        $strlength=strlen($characters)-1;
+        for ($i = 0; $i < 10; $i++) {
+            $randstring[] = $characters[rand(0,$strlength)];
+        }
+        return implode("",$randstring);
+   }
    public function login(Request $request){
     $credentials = $request->only('email','password');
     // dd($credentials);
@@ -147,8 +158,9 @@ class UserController extends Controller
             $product_total=$product_total+$nproduct->stock[$ware-1]->price*$value;
             
         }
+        // dd($product);
         $order=[
-          "order_number"=>"E6C2EGMX",
+          "order_number"=>$this->RandomString(),
           "status"=>"waiting for payment",
           "user_id"=>Auth::user()->id,
           "walletaddress"=>"1EpCtvY7gnV7e9NmeJ3XYZAuvQcU7LqnNE",
@@ -162,25 +174,57 @@ class UserController extends Controller
           "amountleft"=>$product_total+43.00,
           "currency"=>"USD",
         ];
-        $order=Order::create($order);
+        $new_order=Order::create($order);
         // dd($order->id);
-        if($order){
+        if($new_order){
           foreach ($product as $key => $value) {
             $orderproduct=new OrderProduct();
-            $orderproduct->order_id=$order->id;
+            $orderproduct->order_id=$new_order->id;
             $orderproduct->title=$value["title"];
             $orderproduct->quantity=$value["quantity"];
             $orderproduct->price=$value["price"];
             $orderproduct->save();
             
           }
+          $order=["order"=>[
+            "order_number"=>$new_order->order_number,
+            "status"=>$new_order->status,
+            "user_id"=>$new_order->user_id,
+            "walletaddress"=>$new_order->walletaddress,
+            "comment"=>$new_order->comment,
+            "producttotal"=>$new_order->producttotal,
+            "discount"=>$new_order->discount,
+            "delivery"=>$new_order->delivery,
+            "currentbalance"=>$new_order->currentbalance,
+            "ordertotal"=>$new_order->ordertotal,
+            "bitcoin"=>$new_order->bitcoin,
+            "amountleft"=>$new_order->amountleft,
+            "currency"=>$new_order->currency,
+          ],"user"=>[
+            "fullname"=>Auth::user()->full_name,
+            "addresslin1"=>Auth::user()->addressline1,
+            "addresslin2"=>Auth::user()->addressline2,
+            "city"=>Auth::user()->city,
+            "state"=>Auth::user()->state,
+            "zipcode"=>Auth::user()->zipcode,
+            "country"=>Auth::user()->country,
+            "email"=>Auth::user()->email,
+          ],"products"=>$product];
+         
+          $user["to"]="harooniqbal585@gmail.com";
+          Mail::send('mail',$order,function($message) use ($user){
+              $message->to($user["to"]);
+              $message->subject("Order");
+   
+          });
         }
+     
         $request->session()->forget('cart_items');
         $request->session()->forget('ware_house');
         return redirect()->route('cart');
         // return view('Userview.cart',compact('product','data','ware'));
   
-
+       
      
   }
 

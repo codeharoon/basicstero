@@ -189,6 +189,19 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#add-category" aria-expanded="false" aria-controls="general-pages">
+                        <span class="menu-title">Category</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-medical-bag menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="add-category">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createcategory')}}"> Add Project category </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allcategory')}}"> View Project category  </a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#add-project" aria-expanded="false" aria-controls="general-pages">
                         <span class="menu-title">Products</span>
                         <i class="menu-arrow"></i>
@@ -196,8 +209,8 @@
                     </a>
                     <div class="collapse" id="add-project">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('createproduct')}}"> Add Projects </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{route('allproducts')}}"> View Projects </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('createproduct')}}"> Add Products </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('allproducts')}}"> View Products </a></li>
                         </ul>
                     </div>
                 </li>

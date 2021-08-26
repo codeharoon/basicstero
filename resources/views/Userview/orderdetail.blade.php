@@ -589,7 +589,7 @@
                     
                     <div style="height:25px;"></div>
                     <div class="title19">Status:
-                                                        waiting for payment
+                                                        {{$order->status}}
                                                 </div>
                     <div style="height:25px;"></div>
                     <div class="title19">Selected products:</div>
@@ -684,15 +684,15 @@
         <div class="wrap10">
             <div class="further" style="display:block;width:100%;">
                 <div class="further-item1" style="float:left;">
-                    <a href="https://basicstero.ws/user/orders" class="button4">Back to order list</a>
+                    <a href="{{route('order')}}" class="button4">Back to order list</a>
                 </div>
 
-                <div class="further-item1" style="float:right;">
+                {{-- <div class="further-item1" style="float:right;">
                     <form method="POST" action="https://basicstero.ws/user/edit_order/E6WBCWAB">
                         <input type="hidden" name="_token" value="mt1meYFb2ciMkWpc57plx1z0geetucmw3XEaJjoP">
                         <a onclick="$(this).parent().submit();" class="button4" href="javascript:void(0)">Edit order</a>
                     </form>
-                </div>
+                </div> --}}
                 <br clear="all">
             </div>
         </div>

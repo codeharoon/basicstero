@@ -60,8 +60,7 @@
                     </span>
                                     <span>
                         <a class=""
-                                                      href="{{route('purchase')}}"
-                                                   >Purchase</a>
+                            href="{{route('purchase')}}">Purchase</a>
                     </span>
                                     <span>
                         <a class=""
@@ -384,6 +383,37 @@ $(document).ready(function () {
             if (val < 1) val = 1;
             obj.val(val);
         });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $(".box-item3").click(function () {
+            $(this).toggleClass('box-item3-active');
+
+            list = [];
+            $.each($('.box-item3-active'), function () {
+                list.push($(this).data('id'));
+            });
+
+            category = '';
+            if (list.length) {
+                category = '?category=' + list.join(',');
+            }
+
+            url = window.location.pathname + category;
+
+            // $.get(url.replace('/price', '/price_ajax'), {}, function (response) {
+            //     data = JSON.parse(response);
+            //     $('#pricelist_content').html(data['products']);
+            // });
+
+            history.pushState({}, null, url);
+        });
+
+        /*$('.data_trigger').click(function () {
+            $('tr.tr').removeClass('active');
+            $(this).closest('tr').addClass('active');
+        });*/
     });
 </script>
 <div id="overlay"></div>

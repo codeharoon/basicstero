@@ -394,47 +394,47 @@
 <div class="box1 border1">
     <div class="title6">INJECTABLE LINE</div>
     <div class="wrap2">
-                        <a href="/injectableline/testosterones">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="1" data-url="testosterones">Testosterones</div>
             </a>
-                        <a href="/injectableline/nandrolones">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="3" data-url="nandrolones">Nandrolones</div>
             </a>
-                        <a href="/injectableline/boldenones">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="4" data-url="boldenones">Boldenones</div>
             </a>
-                        <a href="/injectableline/trenbolone">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="5" data-url="trenbolone">Trenbolones</div>
             </a>
-                        <a href="/injectableline/stanozolol">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="6" data-url="stanozolol">Stanozolol</div>
             </a>
-                        <a href="/injectableline/primobolan">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="7" data-url="primobolan">Primobolanes</div>
             </a>
-                        <a href="/injectableline/masteron">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="8" data-url="masteron">Masterones</div>
             </a>
-                        <a href="/injectableline/pharma-mix">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="9" data-url="pharma-mix">Mixes Special Line</div>
             </a>
-                        <a href="/injectableline/methandienone">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="10" data-url="methandienone">Methandienone inj.</div>
             </a>
-                        <a href="/injectableline/oxymetholone">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="24" data-url="oxymetholone">Oxymetholone</div>
             </a>
-                        <a href="/injectableline/gw1516">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="26" data-url="gw1516">GW1516</div>
             </a>

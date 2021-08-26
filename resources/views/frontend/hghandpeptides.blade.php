@@ -395,7 +395,7 @@
 <div class="box1 border1">
     <div class="title6">HGH AND PEPTIDES</div>
     <div class="wrap2">
-                        <a href="/injectableline/hgh">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="25" data-url="hgh">HGH</div>
             </a>

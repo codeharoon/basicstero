@@ -15,7 +15,6 @@ class AddActiveSubstanceToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('active_substance',150);
-            $table->bigInteger('category_id');
         });
     }
 
@@ -28,7 +27,6 @@ class AddActiveSubstanceToProductsTable extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropColumn('active_substance');
-            $table->dropColumn('category_id');
         });
     }
 }

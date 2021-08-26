@@ -395,15 +395,15 @@
 <div class="box1 border1">
     <div class="title6">ORAL LINE</div>
     <div class="wrap2">
-                        <a href="/oralsteroids/oral-steroids">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="19" data-url="oral-steroids">Oral Steroids</div>
             </a>
-                        <a href="/oralsteroids/pct">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="22" data-url="pct">Post Cycle Therapy</div>
             </a>
-                        <a href="/oralsteroids/fat-loss">
+                        <a href="#">
                 <div class="box-item4"
                      data-id="23" data-url="fat-loss">Fat Loss</div>
             </a>

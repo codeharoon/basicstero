@@ -499,7 +499,7 @@
                                             <br>
                                                     <a onclick="editOrder('E6WBCWAB')" style="color:rgba(193, 164, 123, 1);" href="javascript:void(0)">Edit</a>
                                                 <br>
-                                                    <a href="javascript:void(0);" onclick="deleteOrder('E6WBCWAB')">Delete</a>
+                                                    <a href="{{route('deleteorder',$item->order_number)}}">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
